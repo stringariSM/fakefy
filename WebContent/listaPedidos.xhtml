@@ -12,7 +12,7 @@
 			layout="grid" styleClass="ui-panelgrid-blank">
 
 			<h1>
-				<h:outputText value="Lista de Pedidos" />
+				<h:outputText value="Lista de Pedidos nosso teste" />
 			</h1>
 			<br />
 			<h:form id="listaPedidoForm" prependId="false">
@@ -45,7 +45,7 @@
 						<f:facet name="header">
 							<h:outputText value="Ações" />
 						</f:facet>
-						<h:commandLink action="mantemPedido">
+						<h:commandLink action="mantemPedido" ajax="false">
 							<f:param name="row" value="#{rowIndex}" />
 							<h:graphicImage library="images" name="database-edit-icon.png" />
 						</h:commandLink>

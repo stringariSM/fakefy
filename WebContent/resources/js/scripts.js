@@ -10,4 +10,16 @@ $(document).ready(function(){
 		//$('.sptDefault').css('height', windowHeight);
 		$('body').css('height', windowHeight);
 	});
+	
+	$('.listOption').hover(function(){
+		$(this).addClass('hoverdiv');
+	});
+	
+	$( ".listOption" )
+    .mouseenter(function() {
+    	$(this ).addClass("hoverdiv");
+    })
+    .mouseleave(function() {
+	    $(this ).removeClass("hoverdiv");
+    });
 });

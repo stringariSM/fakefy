@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title><ui:insert name="pageTitle">Page Title</ui:insert></title>
+</h:head>
+<h:body>
+
+<p:layout fullPage="true">
+ 
+    <p:layoutUnit position="north" size="100" header="Top" resizable="true" closable="true" collapsible="true">
+        	<div><ui:insert name="pageLogo">Page Logo</ui:insert>
+	<ui:insert name="pageHeader">Page Header</ui:insert>
+	</div>
+    </p:layoutUnit>
+ 
+    <p:layoutUnit position="south" size="100" header="Bottom" resizable="true" closable="true" collapsible="true">
+        <ui:insert name="footer">
+			Aqui vai o rodapé
+		</ui:insert>
+    </p:layoutUnit>
+ 
+    <p:layoutUnit position="west" size="200" header="Left" resizable="true" closable="true" collapsible="true">
+        <table width="200" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td>
+			<ul>
+			    <li><a href="cadastroProdutosTemplate1.xhtml">Template 1 (Layout com Divs)</a></li>
+				<li><a href="listaPedidos.xhtml">Voltar</a></li>
+			</ul>
+			</td>
+		</tr>
+	</table>
+    </p:layoutUnit>
+ 
+    <p:layoutUnit position="east" size="200" header="Right" resizable="true" closable="true" collapsible="true" effect="drop">
+        <h:outputText value="Right unit content." />
+    </p:layoutUnit>
+ 
+    <p:layoutUnit position="center">
+        <ui:insert name="body">Page Body</ui:insert>
+    </p:layoutUnit>
+ 
+</p:layout>
+
+</h:body>
+</html>

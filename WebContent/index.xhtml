@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/templateFake.xhtml">
+	
+	<ui:define name="body">
+		<header>
+			<h3>Músicas</h3>
+
+			<div class="alignRight">
+				<a href="adicionaMusica.xhtml" id="btnAdicionarMusica" title="Adicionar música" class="btn-red">Adicionar Música</a>
+			</div>
+		</header>
+		
+		<section class="listagem" id="musicas">
+			<h:dataTable var="car" value="">
+			    <h:column headerText="">
+			        <h:outputText value="" />
+			    </h:column>
+			 
+			    <h:column headerText="Nome da Música" priority="3">
+			        <h:outputText value="" />
+			    </h:column>
+			 
+			    <h:column headerText="Arquivo" priority="2">
+			        <h:outputText value="" />
+			    </h:column>
+			 
+			    <h:column headerText="" priority="4">
+			        <h:outputText value="" />
+			    </h:column>
+			</h:dataTable>
+		</section>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,55 @@
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+h1 {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+.rodape{
+	height:60px; 
+	background-color:#FFFFFF; 
+	clear:both;
+	border: 1px solid red;
+	text-align:center; 
+} 
+#header{
+	position:relative; 
+	height:15%; 
+	background-color:#660000; 
+	width:100%;
+	color:#FFFFFF;
+} 
+#box_direita {
+	float:left;
+	border: 1px solid green;
+}
+div#menu{
+	float:left;
+	width:200px;
+	padding:0px;
+	margin:0px;
+	font:12px Verdana, sans-serif;
+}
+div#menu ul{
+	display:block;
+	margin:0px;
+	padding: 0px;
+}
+div#menu ul a{
+	display:block;
+	padding:3px 3px 3px 1em;
+	text-indent:20px;
+	color:#ccc;
+	text-decoration:none;
+	border:1px solid #1a1a1a;
+	border-left:0px;
+	border-right:0px;
+}
+div#menu ul a:hover{
+	text-indent:30px;
+	color:#fff;
+	border:1px solid #9f0004;
+	border-left:0px;
+	border-right:0px;
+}	

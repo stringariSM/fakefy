@@ -1,0 +1,10 @@
+.ui-datatable.borderless .ui-datatable-data tr,
+.ui-datatable.borderless .ui-datatable-data-empty tr,
+.ui-datatable.borderless .ui-datatable-data td,
+.ui-datatable.borderless .ui-datatable-data-empty td {
+    border-style: none;
+}
+
+.labelAzul .ui-outputlabel{
+    color:blue;
+}

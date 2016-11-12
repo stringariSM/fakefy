@@ -1,0 +1,43 @@
+1) Criar um banco de dados chamado AulaJSF no seu servidor PostgreSQL
+
+2) Executar dentro do banco AulaJSF o scripts scripts.sql 
+
+3) Editar o arquivo standalone.xml, e dentro do elemento XML <datasources>,
+
+acrescentar:
+
+                <datasource jndi-name="java:jboss/datasources/AulaJSF" pool-name="AulaJSF" enabled="true" use-java-context="true" use-ccm="true">
+                    <connection-url>jdbc:postgresql://localhost:5432/AulaJSF</connection-url>
+                    <driver>org.postgresql</driver>
+                    <pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>4</max-pool-size>
+                        <prefill>false</prefill>
+                        <use-strict-min>false</use-strict-min>
+                        <flush-strategy>FailingConnectionOnly</flush-strategy>
+                    </pool>
+                    <security>
+                        <user-name>postgres</user-name>
+                        <password>postgres</password>
+                    </security>
+                </datasource>
+                
+4) No mesmo arquivo, localizar o elemento XML <drivers> e acrescentar:
+
+                    <driver name="org.postgresql" module="org.postgresql">
+                        <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
+                    </driver>
+                    
+5) Copiar o arquivo postgresql-9.4.1211.jar para dentro da pasta 
+
+<wildfly>/modules/system/layers/base/org/postgresql/main        
+
+6) Copiar o arquivo module.xml para a mesma pasta
+
+7) Alterar no build.xml o caminho do servidor wildfly.
+
+8) Iniciar o servidor
+
+9) Fazer o deploy
+
+                            

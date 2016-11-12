@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Alunos Web App - Lista de Alunos JSF</title>
+	<h:outputStylesheet library="css" name="box.css" />
+</h:head>
+<h:body>
+	<h1>
+		<h:outputText value="Lista de Alunos" />
+	</h1>
+	<br />
+	<h:form id="listaAlunoForm" prependId="false">
+		<h:dataTable id="box-table-a" value="${alunoBean.todosAlunos}"
+			var="aluno">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.idLabel}" />
+				</f:facet>
+				<h:outputText value="#{aluno.id}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.matriculaLabel}" />
+				</f:facet>
+				<h:outputText value="#{aluno.matricula}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.nomeLabel}" />
+				</f:facet>
+				<h:outputText value="#{aluno.nome}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.cursoLabel}" />
+				</f:facet>
+				<h:outputText value="#{aluno.nomeCurso}" />
+			</h:column>
+		    <h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.cursoLabel} (tabela)" />
+				</f:facet>
+				<h:outputText value="#{aluno.curso.nome}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.acoesLabel}" />
+				</f:facet>
+				<h:commandLink action="mantemAluno"
+					actionListener="#{alunoBean.buscaAluno}">
+					<h:graphicImage library="images" 
+					name="database-edit-icon.png" />
+					<f:param name="id" value="#{aluno.id}" />
+				</h:commandLink>
+				<h:commandLink action="#{alunoBean.removeAluno(aluno)}"
+					onclick="return confirm('#{msg.confirmaExclusao}');">
+					<h:graphicImage library="images" name="database-remove-icon.png" />
+				</h:commandLink>
+			</h:column>
+		</h:dataTable>
+		<br />
+		<h:commandLink action="mantemAluno"
+			actionListener="#{alunoBean.limpaAluno}">
+	     #{msg.linkNovo}
+	</h:commandLink>
+	<br/>
+	<h:outputLink value="listaPedidos.xhtml">Volta ao início</h:outputLink>
+	</h:form>
+</h:body>
+</html>

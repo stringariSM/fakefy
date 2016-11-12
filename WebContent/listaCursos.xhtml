@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Alunos Web App - Lista de Cursos JSF</title>
+	<h:outputStylesheet library="css" name="box.css" />
+</h:head>
+<h:body>
+	<h1>
+		<h:outputText value="Lista de Cursos" />
+	</h1>
+	<br />
+	<h:form id="listaCursoForm" prependId="false">
+		<h:dataTable id="box-table-a" value="${cursoListaBean.todosCursos}"
+			var="curso">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.idLabel}" />
+				</f:facet>
+				<h:outputText value="#{curso.id}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.codigoLabel}" />
+				</f:facet>
+				<h:outputText value="#{curso.codigo}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.nomeLabel}" />
+				</f:facet>
+				<h:outputText value="#{curso.nome}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.acoesLabel}" />
+				</f:facet>
+				<h:commandLink action="mantemCurso"
+					actionListener="#{cursoFormBean.buscaCurso}">
+					<h:graphicImage library="images" 
+					name="database-edit-icon.png" alt="#{msg.btnAlterar}"/>
+					<f:param name="id" value="#{curso.id}" />
+				</h:commandLink>
+				<h:commandLink action="#{cursoListaBean.removeCurso(curso)}"
+					onclick="return confirm('#{msg.confirmaExclusao}');">
+					<h:graphicImage library="images" name="database-remove-icon.png" alt="#{msg.btnExcluir}"/>
+				</h:commandLink>
+			</h:column>
+		</h:dataTable>
+		<br />
+		<h:commandLink action="mantemCurso"
+			actionListener="#{cursoFormBean.limpaCurso}">
+	     #{msg.linkNovo}
+	</h:commandLink>
+	<br/>
+	<h:outputLink value="listaPedidos.xhtml">Volta ao início</h:outputLink>
+	</h:form>
+</h:body>
+</html>

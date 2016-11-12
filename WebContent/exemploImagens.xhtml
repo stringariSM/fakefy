@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui">
+<h:head>
+	<title>Exemplo Imagens</title>
+</h:head>
+<h:body>
+	<div class="ui-fluid">
+		<p:panelGrid columns="1" columnClasses="ui-grid-col-10" layout="grid"
+			styleClass="ui-panelgrid-blank">
+
+			<h1>
+				<h:outputText value="Exemplo Imagens" />
+			</h1>
+
+			<h:outputText
+				value="#{galeriaProdutoBean.enderecoAplicacao}/image?id=16" />
+
+			<img alt="imagem carregada com tag img"
+				src="#{galeriaProdutoBean.enderecoAplicacao}/image?id=16"
+				style="display: block;" />
+
+			<h:graphicImage alt="imagem carregada com tag h:graphicImage"
+				value="#{galeriaProdutoBean.enderecoAplicacao}/image?id=16" />
+
+
+			<p:graphicImage alt="imagem carregada com tag p:graphicImage"
+				value="#{galeriaProdutoBean.enderecoAplicacao}/image?id=16" />
+
+			<o:graphicImage alt="imagem carregada com tag o:graphicImage"
+				value="#{imagemBean.getImagem(16)}" />
+			<br />
+			<h:outputLink value="listaPedidos.xhtml">
+				<h:outputText value="Voltar" />
+			</h:outputLink>
+		</p:panelGrid>
+	</div>
+</h:body>
+</html>

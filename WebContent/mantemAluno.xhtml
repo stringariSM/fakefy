@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Alunos Web App - Lista de Alunos JSF</title>
+	<h:outputStylesheet library="css" name="box.css" />
+</h:head>
+<h:body>
+	<h1>
+		<h:outputText value="#{msg.labelAltera}"
+			rendered="#{not alunoBean.inclusao}" />
+		<h:outputText value="#{msg.labelNovo}"
+			rendered="#{alunoBean.inclusao}" />
+	</h1>
+	<br />
+	<h:form id="alunoForm">
+		<h:messages />
+#{msg.idLabel}:
+<h:inputText value="#{alunoBean.aluno.id}"
+			disabled="#{alunoBean.inclusao}" />
+		<br />
+#{msg.matriculaLabel}:
+<h:inputText value="#{alunoBean.aluno.matricula}" />
+		<br />
+#{msg.nomeLabel}:
+<h:inputText value="#{alunoBean.aluno.nome}" />
+		<br />
+#{msg.cursoLabel}:
+<h:inputText value="#{alunoBean.aluno.nomeCurso}" />
+		<br />
+		#{msg.cursoLabel} (tabela):
+		
+		<h:selectOneMenu value="#{alunoBean.aluno.curso}" style="width:100%"
+			converter="omnifaces.SelectItemsConverter">
+			<f:selectItem noSelectionOption="true" itemLabel="#{msgs.selecione}" />
+			<f:selectItems value="#{cursoListaBean.todosCursos}" var="curso"
+				itemLabel="#{curso.nome}" itemValue="#{curso}" />
+		</h:selectOneMenu>
+
+		<br />
+		<h:commandButton id="btnInserir" action="#{alunoBean.inserir}"
+			value="#{msg.btnInserir}" disabled="#{not alunoBean.inclusao}" />
+		<h:commandButton id="btnAlterar" action="#{alunoBean.alterar}"
+			value="#{msg.btnAlterar}" disabled="#{alunoBean.inclusao}" />
+		<h:commandButton id="btnExcluir" action="#{alunoBean.excluir}"
+			value="#{msg.btnExcluir}" disabled="#{alunoBean.inclusao}"
+			onclick="return confirm('#{msg.confirmaExclusao}');" />
+		<h:commandButton id="btnLimpar" action="#{alunoBean.limpar}"
+			value="#{msg.btnLimpar}" />
+	</h:form>
+	<br />
+	<h:outputLink value="listaAlunos.xhtml">
+  #{msg.linkVoltar}
+</h:outputLink>
+</h:body>
+</html>

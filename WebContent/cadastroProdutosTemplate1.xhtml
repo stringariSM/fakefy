@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/template_com_divs.xhtml">
+
+	<ui:define name="estilos">
+		<h:outputStylesheet library="css" name="custom.css" />
+	</ui:define>
+	<ui:define name="pageLogo"></ui:define>
+	<ui:define name="pageTitle">Cadastro de produtos Template 1 (Divs)</ui:define>
+	<ui:define name="pageHeader">
+		<div class="labelAzul">
+			<p:outputLabel value="Cadastro de produtos Template 1 (Divs)" />
+		</div>
+	</ui:define>
+	<ui:define name="body">
+		<div class="ui-fluid">
+			<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10"
+				layout="grid" styleClass="ui-panelgrid-blank">
+
+				<h1>
+					<h:outputText
+						value="Cadastro de Produtos SPA (Single Page Application)" />
+				</h1>
+				<br />
+				<h:form id="cadastroProdutoForm" prependId="false">
+
+					<p:growl showDetail="true" autoUpdate="true" />
+					<p:panelGrid columns="2"
+						columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid"
+						styleClass="ui-panelgrid-blank" id="campos_nop">
+					</p:panelGrid>
+					<p:panelGrid columns="2"
+						columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid"
+						styleClass="ui-panelgrid-blank" id="campos">
+						<p:outputLabel value="Código:" for="produto_codigo" />
+						<p:inputText id="produto_codigo"
+							value="#{cadastroProdutoBean.produto.codigo}" />
+						<p:outputLabel value="Nome:" for="produto_nome" />
+						<p:inputText id="produto_nome"
+							value="#{cadastroProdutoBean.produto.nome}" />
+						<p:outputLabel value="Descrição:" for="produto_descricao" />
+						<p:inputText id="produto_descricao"
+							value="#{cadastroProdutoBean.produto.descricao}" />
+					</p:panelGrid>
+					<p:panelGrid columns="3" columnClasses="ui-grid-col-3"
+						layout="grid" styleClass="ui-panelgrid-blank">
+						<p:commandButton value="Pesquisar"
+							actionListener="#{cadastroProdutoBean.pesquisar}"
+							update="produtos_table" />
+						<p:commandButton value="Salvar"
+							actionListener="#{cadastroProdutoBean.salvar}"
+							update="cadastroProdutoForm" />
+						<p:commandButton value="Limpar"
+							actionListener="#{cadastroProdutoBean.limpar}"
+							update="cadastroProdutoForm" />
+					</p:panelGrid>
+
+					<p:dataTable id="produtos_table" var="prod" styleClass="borderless"
+						value="#{cadastroProdutoBean.lazyModel}" paginator="true"
+						paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+						rowsPerPageTemplate="5,10,15" selectionMode="single"
+						selection="#{cadastroProdutoBean.produtoSelecionado}" lazy="true"
+						first="#{cadastroProdutoBean.offset}"
+						rows="#{cadastroProdutoBean.quantidade}"
+						paginatorPosition="bottom"
+						currentPageReportTemplate="({startRecord} - {endRecord} de {totalRecords})"
+						rowKey="#{prod.id}">
+
+						<p:ajax event="rowSelect"
+							listener="#{cadastroProdutoBean.onRowSelect}" update="campos" />
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Código" />
+							</f:facet>
+							<h:outputText value="#{prod.codigo}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Nome" />
+							</f:facet>
+							<h:outputText value="#{prod.nome}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Descrição" />
+							</f:facet>
+							<h:outputText value="#{prod.descricao}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Excluir" />
+							</f:facet>
+							<h:commandLink action="#{cadastroProdutoBean.remove(prod)}"
+								onclick="return confirm('#{msg.confirmaExclusao}');">
+								<h:graphicImage library="images" name="database-remove-icon.png"
+									alt="Excluir" />
+							</h:commandLink>
+						</p:column>
+					</p:dataTable>
+					<br />
+				</h:form>
+			</p:panelGrid>
+		</div>
+	</ui:define>
+</ui:composition>

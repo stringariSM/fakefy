@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Alunos Web App - Mantém Cursos JSF</title>
+	<h:outputStylesheet library="css" name="box.css" />
+</h:head>
+<h:body>
+	<h1>
+		<h:outputText value="#{msg.labelAltera}" rendered="#{not cursoFormBean.inclusao}"/>
+		<h:outputText value="#{msg.labelNovo}" rendered="#{cursoFormBean.inclusao}"/>
+	</h1>
+	<br />
+	<h:form id="cursoForm">
+		<h:messages />
+#{msg.idLabel}:
+<h:inputText value="#{cursoFormBean.curso.id}"/>
+		<br />
+#{msg.codigoLabel}:
+<h:inputText value="#{cursoFormBean.curso.codigo}" />
+		<br />
+#{msg.nomeLabel}:
+<h:inputText value="#{cursoFormBean.curso.nome}" />
+		<br />
+		<h:commandButton id="btnInserir" action="#{cursoFormBean.inserir}"
+			value="#{msg.btnInserir}" disabled="#{not cursoFormBean.inclusao}" />
+		<h:commandButton id="btnAlterar" action="#{cursoFormBean.alterar}"
+			value="#{msg.btnAlterar}"/>
+		<h:commandButton id="btnExcluir" action="#{cursoFormBean.excluir}"
+			value="#{msg.btnExcluir}" 
+			onclick="return confirm('#{msg.confirmaExclusao}');" />
+		<h:commandButton id="btnLimpar" action="#{cursoFormBean.limpar}"
+			value="#{msg.btnLimpar}" />
+	</h:form>
+	<br />
+	<h:outputLink value="listaCursos.xhtml">
+  #{msg.linkVoltar}
+</h:outputLink>
+</h:body>
+</html>

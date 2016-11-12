@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<link rel="stylesheet" href="/jsfprime/templates/css/common.css"
+		type="text/css" />
+	<title><ui:insert name="pageTitle">Page Title</ui:insert></title> 
+	<ui:insert name="estilos"></ui:insert>
+</h:head>
+<h:body>
+	<div id="header"><ui:insert name="pageLogo">Page Logo</ui:insert>
+	<h1><ui:insert name="pageHeader">Page Header</ui:insert></h1>
+	</div>
+	<div id="menu">
+	<table width="200" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td bgcolor="#1A1A1A">
+			<ul>
+			    <li><a href="cadastroProdutosTemplate2.xhtml">Template 2 (Layouts Primefaces)</a></li>
+				<li><a href="listaPedidos.xhtml">Voltar</a></li>
+			</ul>
+			</td>
+		</tr>
+	</table>
+	</div>
+	<div id="box_direita"><ui:insert name="body">Page Body</ui:insert>
+	</div>
+	<br clear="all" />
+	<div class="rodape"><ui:insert name="footer">
+		<ui:insert name="footer">
+			Aqui vai o rodapé
+		</ui:insert>
+	</ui:insert></div>
+</h:body>
+</html>

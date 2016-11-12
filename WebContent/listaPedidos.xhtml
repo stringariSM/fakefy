@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>JSF com Primefaces</title>
+</h:head>
+<h:body>
+	<div class="ui-fluid">
+		<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10"
+			layout="grid" styleClass="ui-panelgrid-blank">
+
+			<h1>
+				<h:outputText value="Lista de Pedidos" />
+			</h1>
+			<br />
+			<h:form id="listaPedidoForm" prependId="false">
+				<p:dataTable id="pedidos-table" rowIndexVar="rowIndex"
+					value="${pedidoListaBean.todosPedidos}" var="pedido" reflow="true"
+					rows="5" paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Id" />
+						</f:facet>
+						<h:outputText value="#{pedido.id}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Nome" />
+						</f:facet>
+						<h:outputText value="#{pedido.nomeCliente}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Data" />
+						</f:facet>
+						<h:outputText value="#{pedido.data}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Ações" />
+						</f:facet>
+						<h:commandLink action="mantemPedido">
+							<f:param name="row" value="#{rowIndex}" />
+							<h:graphicImage library="images" name="database-edit-icon.png" />
+						</h:commandLink>
+						<p:commandLink action="#{pedidoListaBean.removePedido(pedido)}"
+							update="pedidos-table">
+							<p:confirm header="Confirmação" message="Quer mesmo excluir?"
+								icon="ui-icon-alert" />
+							<h:graphicImage library="images" name="database-remove-icon.png" />
+						</p:commandLink>
+					</p:column>
+				</p:dataTable>
+				<br />
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					<p:commandButton value="Sim" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="Não" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+			</h:form>
+			<br />
+			<h2>
+				<h:outputText value="Layout Responsivo :" />
+			</h2>
+			<br />
+			<h:outputLink value="mantemPedido.xhtml">Novo Pedido (Exemplo mestre-detalhe, dialogs(pop-ups) e AJAX)</h:outputLink>
+			<br />
+			<h:outputLink value="listaProdutos.xhtml">Lista de Produtos (Com paginação de dados)</h:outputLink>
+			<br />
+			<h:outputLink value="cadastroProdutos.xhtml">Produtos SPA (Página única)</h:outputLink>
+			<br />
+			<h2>
+				<h:outputText value="Layout Não Responsivo :" />
+			</h2>
+			<br />
+			<h:outputLink value="listaCursos.xhtml">Cadastro Cursos (Em duas páginas: lista e formulário)</h:outputLink>
+			<br />
+			<h:outputLink value="listaAlunos.xhtml">Cadastro Alunos (Em duas páginas: lista e formulário) (SelectOneMenu (Option))</h:outputLink>
+			<br />
+			<h:outputLink value="exemploImagens.xhtml">Exemplo Imagens</h:outputLink>
+			<br />
+			<h:outputLink value="cadastroProdutosTemplate1.xhtml">Templates Facelets</h:outputLink>
+		</p:panelGrid>
+	</div>
+</h:body>
+</html>

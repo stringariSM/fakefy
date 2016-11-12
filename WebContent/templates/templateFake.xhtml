@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<h:outputStylesheet library="css" name="reset.css"  />
+	
+	<h:outputStylesheet library="lib" name="bootstrap/css/bootstrap.min.css"  />	
+	<h:outputStylesheet library="lib" name="sweetalert/sweetalert.min.css"  />
+	
+   <h:outputStylesheet library="css" name="style.css"  /> 
+	<title>Fakefy</title>
+</h:head>
+<h:body>
+	<div class="sptDefault">
+		<div class="sptBody sptFlex">
+			<section class="sptMenuBar">
+				<div class="sptLogo">
+					<h1>
+						<h:graphicImage value="resources/images/logo.png" title="Fakefy" alt="Fakefy" width="90" height="90"/>
+						<h:graphicImage value="resources/images/logo-texto.png" title="Fakefy" alt="Fakefy" width="80"/>
+					</h1>
+				</div>
+				
+				<nav class="sptMenuList">							
+					<ul class="sptFlex">
+						<li class="active">
+							<a href="index.xhtml">
+								<i class="fa fa-music" aria-hidden="true"></i>
+								Músicas
+							</a>
+						</li>
+						<li>
+							<a href="playlist.xhtml">
+								<i class="fa fa-list-ul" aria-hidden="true"></i>
+								Playlists
+							</a>
+						</li>
+					</ul>
+				</nav>
+				
+			</section>
+			
+			<section class="sptContent" id="sptConteudoPagina">
+				<ui:insert name="body">Page Body</ui:insert>
+			</section>
+			
+			<section class="sptAudio">
+				<figure class="capaalbum">
+					<img src="images/albuns/1.jpg" alt="Nome do Álbum" title="Nome do Álbum"/>
+				</figure>
+				<header class="infosMusic">
+					<h3>Música XXX</h3>
+					<small>Álbum YYY</small>
+				</header>
+
+				<audio controls="controls">
+					<source src="musics/track1.mp3" type="audio/mpeg" />
+					Your browser does not support the audio element.
+				</audio>
+			</section>
+		</div>
+	</div>
+	
+	<h:outputScript library="lib" name="jquery/jquery-3.1.0.min.js" />
+	<h:outputScript library="lib" name="listjs/listjs.min.js" />
+	<h:outputScript library="lib" name="bootstrap/js/bootstrap.min.js" />
+	<h:outputScript library="js" name="scripts.js" />
+</h:body>
+</html>

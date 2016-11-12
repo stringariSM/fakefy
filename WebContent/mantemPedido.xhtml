@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>JSF com Primefaces</title>
+</h:head>
+<h:body>
+	<div class="ui-fluid">
+		<p:panelGrid columns="1" columnClasses="ui-grid-col-2,ui-grid-col-10"
+			layout="grid" styleClass="ui-panelgrid-blank">
+			<h1>
+				<h:outputText value="Pedido" />
+			</h1>
+		</p:panelGrid>
+
+		<h:form id="pedidoForm" prependId="false">
+			<p:messages />
+			<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10"
+				layout="grid" styleClass="ui-panelgrid-blank">
+
+				<p:outputLabel value="Id" for="pedido_id" />
+				<p:inputText id="pedido_id" value="#{pedidoFormBean.pedido.id}" disabled="true"/>
+				<p:outputLabel value="Nome:" for="pedido_nomeCliente" />
+				<p:inputText id="pedido_nomeCliente"
+					value="#{pedidoFormBean.pedido.nomeCliente}" />
+
+				<p:outputLabel for="pedido_data" value="Data" />
+				<p:calendar id="pedido_data" value="#{pedidoFormBean.pedido.data}"
+					pattern="dd/MM/yyyy" mask="true" />
+			</p:panelGrid>
+			<p:dataTable id="itens_table" value="${pedidoFormBean.pedido.itens}"
+				var="item" rowIndexVar="rowIndex" reflow="true" rows="5">
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Item" />
+					</f:facet>
+					<h:outputText value="#{rowIndex + 1}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Produto" />
+					</f:facet>
+					<h:outputText value="#{item.produto.nome}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Quantidade" />
+					</f:facet>
+					<h:outputText value="#{item.quantidade}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Ações" />
+					</f:facet>
+					<p:commandLink actionListener="#{pedidoFormBean.buscaItem}"
+						oncomplete="PF('item_dlg').show();" ajax="true" update="item_dlg">
+						<f:setPropertyActionListener target="#{pedidoFormBean.item}"
+							value="#{item}" />
+						<p:graphicImage library="images" name="database-edit-icon.png" />
+					</p:commandLink>
+					<p:commandLink action="#{pedidoFormBean.removeItem(item)}"
+						update="itens_table">
+						<p:confirm header="Confirmação" message="Quer mesmo excluir?"
+							icon="ui-icon-alert" />
+						<p:graphicImage library="images" name="database-remove-icon.png" />
+					</p:commandLink>
+				</p:column>
+			</p:dataTable>
+			<p:panelGrid columns="2" columnClasses="ui-grid-col-3" layout="grid"
+				styleClass="ui-panelgrid-blank">
+				<p:commandButton value="Adicionar item"
+					actionListener="#{pedidoFormBean.adicionarItem}"
+					oncomplete="PF('item_dlg').show();" ajax="true" update="item_dlg" />
+				<p:commandButton value="Salvar" action="#{pedidoFormBean.salvar}"
+					ajax="false" />
+				<br />
+				<h:outputLink value="listaPedidos.xhtml">
+					<h:outputText value="Voltar" />
+				</h:outputLink>
+			</p:panelGrid>
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:commandButton value="Sim" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+		</h:form>
+		<p:dialog id="item_dlg" header="Item" widgetVar="item_dlg"
+			height="150" resizable="false" responsive="true">
+			<h:form id="item_dlg_form" prependId="false">
+				<p:panelGrid columns="2" layout="grid"
+					styleClass="ui-panelgrid-blank"
+					columnClasses="ui-grid-col-4,ui-grid-col-8">
+					<p:outputLabel value="Id" for="item_produto" />
+					<p:selectOneMenu id="item_produto"
+						value="#{pedidoFormBean.item.produto}" style="width:125px"
+						converter="omnifaces.SelectItemsConverter">
+						<f:selectItems value="#{pedidoFormBean.produtos}" var="produto"
+							itemLabel="#{produto.nome}" itemValue="#{produto}" />
+					</p:selectOneMenu>
+					<p:outputLabel value="Quantidade" for="item_quantidade" />
+					<p:inputText value="#{pedidoFormBean.item.quantidade}"
+						id="item_quantidade" />
+					<f:facet name="footer">
+						<p:commandButton value="Salvar"
+							action="#{pedidoFormBean.atualizaLista()}" update="itens_table"
+							oncomplete="PF('item_dlg').hide();" />
+						<p:commandButton value="Cancelar" onclick="PF('item_dlg').hide();" />
+					</f:facet>
+				</p:panelGrid>
+			</h:form>
+		</p:dialog>
+	</div>
+</h:body>
+</html>

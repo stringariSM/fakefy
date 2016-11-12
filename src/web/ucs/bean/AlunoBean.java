@@ -146,7 +146,7 @@ public class AlunoBean {
 	}
 	
 	public void buscaAluno(ActionEvent actionEvent) {
-		try {
+		/*try {
 			FacesContext fc = FacesContext.getCurrentInstance();
 			String sId = (String) fc.getExternalContext().getRequestParameterMap().get("id");
 			if(sId!=null) {
@@ -163,7 +163,7 @@ public class AlunoBean {
 			}
 		} catch (Exception e) {
 			this.aluno = new Aluno();
-		}
+		}*/
 	}
 
 }

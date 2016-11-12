@@ -2,6 +2,7 @@ package web.ucs.dao.postgres;
 
 import web.ucs.dao.exceptions.FalhaAcessoAosDadosException;
 import web.ucs.dao.intf.AlunoDAO;
+import web.ucs.dao.intf.ArtistaDAO;
 import web.ucs.dao.intf.CursoDAO;
 import web.ucs.dao.intf.DAOFactory;
 import web.ucs.dao.intf.DadoBinarioDAO;
@@ -21,6 +22,21 @@ public class PostgresDAOFactory extends DAOFactory{
 		
 		try {
 			dao = new PostgresAlunoDAO(this.getConnection());
+			dao.setFactory(this);
+		} catch (FalhaAcessoAosDadosException e) {
+			e.printStackTrace();
+		}
+		
+		return dao;
+	}
+	
+	@Override
+	public ArtistaDAO getArtistaDAO() {
+		
+		ArtistaDAO dao = null;
+		
+		try {
+			dao = new PostgresArtistaDAO(this.getConnection());
 			dao.setFactory(this);
 		} catch (FalhaAcessoAosDadosException e) {
 			e.printStackTrace();

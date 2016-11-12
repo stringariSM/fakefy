@@ -15,23 +15,14 @@
 		</header>
 		
 		<section class="listagem" id="musicas">
-			<h:dataTable var="car" value="">
-			    <h:column headerText="">
-			        <h:outputText value="" />
-			    </h:column>
-			 
-			    <h:column headerText="Nome da Música" priority="3">
-			        <h:outputText value="" />
-			    </h:column>
-			 
-			    <h:column headerText="Arquivo" priority="2">
-			        <h:outputText value="" />
-			    </h:column>
-			 
-			    <h:column headerText="" priority="4">
-			        <h:outputText value="" />
-			    </h:column>
-			</h:dataTable>
+	      <h:dataTable id="box-table-a" value="${artistaBean.todosArtistas}" var="artista">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Artistas" />
+				</f:facet>
+				<h:outputText value="#{artista.getId()}" />
+			</h:column>			
+		 </h:dataTable>
 		</section>
 	</ui:define>
 </ui:composition>

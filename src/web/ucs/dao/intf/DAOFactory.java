@@ -58,6 +58,8 @@ public abstract class DAOFactory {
 	
 	public abstract AlunoDAO getAlunoDAO();
 	
+	public abstract ArtistaDAO getArtistaDAO();
+	
 	public abstract CursoDAO getCursoDAO();
 	
 	public abstract ProdutoDAO getProdutoDAO();

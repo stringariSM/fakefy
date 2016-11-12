@@ -1,4 +1,4 @@
-<project name="jsfprime" basedir="." default="deploy">
+<project name="fakefy" basedir="." default="deploy">
 
 	<!-- Declara as propriedades do build -->
 	<property name="jboss.server.home" value="C:\Users\gabri\eclipse\wildfly-10.1.0.Final" />

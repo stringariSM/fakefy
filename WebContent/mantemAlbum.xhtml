@@ -7,27 +7,27 @@
 	
 	<ui:define name="body">
 		<header>
-			<h3>Músicas</h3>
+			<h3>Albuns</h3>
 
 			<div class="alignRight">
 				<a href="adicionaMusica.xhtml" id="btnAdicionarMusica" title="Adicionar música" class="btn-red">Adicionar Música</a>
 			</div>
 		</header>
 		
-		<section class="listagem" id="musicas">
-			<h:form id="listaArtistasForm" prependId="false" style='width:100%;'>
-		    	<h:dataTable id="box-table-a" value="${artistaBean.todosArtistas}" var="artista" class="sptFlex listagemgroup">
+		<section class="listagem" id="albuns">
+			<h:form id="listaArtistaForm" prependId="false" style='width:100%;'>
+		    	<h:dataTable id="box-table-a" value="${albumListaBean.albuns}" var="album" class="sptFlex listagemgroup">
 				  	<h:column>
-				  		<h:commandLink action="mantemAlbum">
-							<f:param name="idArtista" value="#{artista.getId()}" />
-							<div style='background-image:url(resources/images/artistas/#{artista.getId()}.jpg)' class="listOption">
-								<!-- Vazio somente para imagem -->
+				  		<h:commandLink action="mantemArtista">
+							<f:param name="row" value="#{rowIndex}" />
+							<div style='background-image:url(resources/images/albuns/#{album.getId()}.jpg)' class="listOption">
+								<!-- Vazio somente para imagem --> teste
 							</div>
 						</h:commandLink>
 					</h:column>		
 					
 					<h:column style="display:flex;">
-						<h:outputText value="#{artista.getNomeArtista()}" />
+						<h:outputText value="#{album.getNomeAlbum()}" />
 					</h:column>			
 				</h:dataTable>
 			</h:form>

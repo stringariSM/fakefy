@@ -1,6 +1,7 @@
 package web.ucs.dao.postgres;
 
 import web.ucs.dao.exceptions.FalhaAcessoAosDadosException;
+import web.ucs.dao.intf.AlbumDAO;
 import web.ucs.dao.intf.AlunoDAO;
 import web.ucs.dao.intf.ArtistaDAO;
 import web.ucs.dao.intf.CursoDAO;
@@ -96,6 +97,21 @@ public class PostgresDAOFactory extends DAOFactory{
 		
 		try {
 			dao = new PostgresItemPedidoDAO(this.getConnection());
+			dao.setFactory(this);
+		} catch (FalhaAcessoAosDadosException e) {
+			e.printStackTrace();
+		}
+		
+		return dao;
+	}
+	
+	@Override
+	public AlbumDAO getAlbumDAO() {
+		
+		AlbumDAO dao = null;
+		
+		try {
+			dao = new PostgresAlbumDAO(this.getConnection());
 			dao.setFactory(this);
 		} catch (FalhaAcessoAosDadosException e) {
 			e.printStackTrace();

@@ -69,5 +69,7 @@ public abstract class DAOFactory {
 	public abstract ItemPedidoDAO getItemPedidoDAO();
 	
 	public abstract DadoBinarioDAO getDadoBinarioDAO();
+
+	public abstract AlbumDAO getAlbumDAO();
 	
 }

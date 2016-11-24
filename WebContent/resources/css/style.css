@@ -325,6 +325,7 @@ input[type="text"]{
 	margin-bottom:15px;
 	border: 0;
 	color:#f7f7f7;
+	box-shadow: none;
 }
 
 .campopadrao{
@@ -467,4 +468,48 @@ table tr th{
 .listagemgroup tr td:last-child {
     text-align: center;
     font-size: 1.5em;
+}
+
+/*Gambiarras*/
+.ui-datatable thead th {
+    background: transparent;
+    color: #FFF;
+    border: 0;
+    font-weight: 100;
+    padding: 10px !important; /*PrimeFaces quer me zoar????*/
+    border-width: 0px !important;
+    border-bottom: 1px solid #FFF !important;
+}
+
+.ui-widget-content{
+	background: transparent !important; /*PrimeFaces quer me zoar????*/
+	color: #FFF;
+	font-weight: 200;
+	border: 0;
+    border-left: 0 !important; /*Esse foi sofrido achar*/
+    border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+}
+
+.ui-datatable tbody td{
+	border: 0 !important; /*PrimeFaces quer me zoar????*/
+    padding: 15px !important;
+}
+
+.ui-datatable table{
+	overflow: hidden; /*Sério??*/
+}
+
+.alignCenter{
+	text-align:center;
+}
+
+.btnReproduzir>a{
+    padding: 10px;
+    background: #993028;
+    color: #FFF;
+    border-radius: 130px;
+}
+
+.ui-fileupload-filename{
+	color:#FFF;
 }

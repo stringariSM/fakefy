@@ -7,6 +7,7 @@ import web.ucs.dao.intf.ArtistaDAO;
 import web.ucs.dao.intf.CursoDAO;
 import web.ucs.dao.intf.DAOFactory;
 import web.ucs.dao.intf.DadoBinarioDAO;
+import web.ucs.dao.intf.FaixaDAO;
 import web.ucs.dao.intf.ItemPedidoDAO;
 import web.ucs.dao.intf.PedidoDAO;
 import web.ucs.dao.intf.ProdutoDAO;
@@ -112,6 +113,21 @@ public class PostgresDAOFactory extends DAOFactory{
 		
 		try {
 			dao = new PostgresAlbumDAO(this.getConnection());
+			dao.setFactory(this);
+		} catch (FalhaAcessoAosDadosException e) {
+			e.printStackTrace();
+		}
+		
+		return dao;
+	}
+	
+	@Override
+   public FaixaDAO getFaixaDAO() {
+		
+		FaixaDAO dao = null;
+		
+		try {
+			dao = new PostgresFaixaDAO(this.getConnection());
 			dao.setFactory(this);
 		} catch (FalhaAcessoAosDadosException e) {
 			e.printStackTrace();

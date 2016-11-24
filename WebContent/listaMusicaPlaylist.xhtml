@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/templateFake.xhtml">
+	
+	<ui:define name="body">
+		<header>
+			<h3>Álbuns</h3>
+
+			<div class="alignRight">
+				<a href="adicionaMusica.xhtml" id="btnAdicionarMusica" title="Adicionar música" class="btn-red">Adicionar Música</a>
+			</div>
+		</header>
+		
+		<section class="listagem" id="albuns">
+			<h:form id="listaArtistaForm" prependId="false" style='width:100%;'>
+		    	<p:dataTable id="tableMusicas" value="${artistaBean.todosArtistas}" var="artista"  class="sptFlex listaMusicas">
+				  	<p:column headerText="Música">
+				  		<h:outputText value="ttttt"/>
+					</p:column>		
+					
+					<p:column headerText="Artista">
+				  		<h:outputText value="eeee"/>
+					</p:column>	
+					
+					<p:column headerText="Álbum">
+				  		<h:outputText value="eeee"/>
+					</p:column>	
+					
+					<p:column headerText="">
+						<div class="alignCenter btnReproduzir">
+					  		<p:link value="Reproduzir">
+					  			<f:param name="lnkReproduzir" value="xx"/>
+					  		</p:link>
+				  		</div>
+					</p:column>			
+				</p:dataTable>
+			</h:form>
+		</section>
+	</ui:define>
+</ui:composition>

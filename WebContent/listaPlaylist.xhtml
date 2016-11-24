@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/templateFake.xhtml">
+	
+	<ui:define name="body">
+		<header>
+			<h3>Músicas</h3>
+
+			<div class="alignRight">
+				<a href="adicionaMusica.xhtml" id="btnAdicionarMusica" title="Adicionar música" class="btn-red">Adicionar Música</a>
+			</div>
+		</header>
+		
+		<section class="listagem" id="musicas">
+			<h:form id="listaArtistasForm" prependId="false" style='width:100%;'>
+		    	<h:dataTable id="box-table-a" value="${artistaBean.todosArtistas}" var="artista" class="sptFlex listagemgroup">
+				  	<h:column>
+				  		<h:commandLink action="mantemAlbum">
+							<f:param name="idArtista" value="#{artista.getId()}" />
+							<div style='background-image:url(resources/images/artistas/#{artista.getId()}.jpg)' class="listOption">
+								<!-- Vazio somente para imagem -->
+							</div>
+						</h:commandLink>
+					</h:column>		
+					
+					<h:column style="display:flex;">
+						<h:outputText value="#{artista.getNomeArtista()}" />
+					</h:column>			
+				</h:dataTable>
+			</h:form>
+		</section>
+	</ui:define>
+</ui:composition>

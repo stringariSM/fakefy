@@ -72,4 +72,6 @@ public abstract class DAOFactory {
 
 	public abstract AlbumDAO getAlbumDAO();
 	
+	public abstract FaixaDAO getFaixaDAO();
+	
 }

@@ -401,3 +401,13 @@ th, td{
 table tr th{
 	border-bottom: 1px solid #4a4949;
 }
+
+/*Gambiarras*/
+.ui-datatable thead th {
+    background: transparent;
+    color: #FFF;
+    border: 0;
+    font-weight: 100;
+    border-bottom: 1px solid #FFF;
+    padding: 10px;
+}

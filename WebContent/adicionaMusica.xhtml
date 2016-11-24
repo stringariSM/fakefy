@@ -6,6 +6,37 @@
 	template="/templates/templateFake.xhtml">
 	
 	<ui:define name="body">
-		<input type="text" name="x" id="x" value="ADICIONA NOVA"/>
+		<header>
+			<h3>Adicionar Músicas</h3>
+		</header>
+		
+		<section class="listagem" id="musicas">
+			<h:form id="listaArtistasForm" prependId="false" style='width:100%;'>
+		    	<div class="row">
+		    		<div class="col-md-12">
+		    			<h:outputLabel value="Nome da Música "/>
+		    			<p:inputText id="NomeMúsica" required="true" label="NomeMúsica"/>
+		    			<p:watermark for="NomeMúsica" value="Nome da Música" id="NomeMúsica_placeholder" />
+		    		</div>
+		    	</div>
+		    	
+		    	<div class="row">
+		    		<div class="col-md-6 col-sm-12">
+				        <h:outputLabel for="menu" value="Álbuns" />
+				        <p:selectCheckboxMenu id="menu" value="${artistaBean.todosArtistas}" label="Álbuns"
+				                              filter="true" filterMatchMode="startsWith" panelStyle="width:100%">
+				            <f:selectItems value="eee" />
+				        </p:selectCheckboxMenu>
+		    		</div>
+		    	</div>
+		    	
+		    	<div class="row">
+		    		<div class="col-md-12">
+		    			<p:growl id="messages" showDetail="true" />
+					    <p:fileUpload value="#{fileUploadView.file}" mode="simple" skinSimple="true"/>
+		    		</div>
+		    	</div>
+			</h:form>
+		</section>
 	</ui:define>
 </ui:composition>

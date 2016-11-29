@@ -74,4 +74,6 @@ public abstract class DAOFactory {
 	
 	public abstract FaixaDAO getFaixaDAO();
 	
+	public abstract PlaylistDAO getPlaylistDAO();
+	
 }

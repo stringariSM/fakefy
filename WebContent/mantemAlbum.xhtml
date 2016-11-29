@@ -18,8 +18,8 @@
 			<h:form id="listaArtistaForm" prependId="false" style='width:100%;'>
 		    	<h:dataTable id="box-table-a" value="${albumListaBean.albuns}" var="album" class="sptFlex listagemgroup">
 				  	<h:column>
-				  		<h:commandLink action="mantemArtista">
-							<f:param name="row" value="#{rowIndex}" />
+				  		<h:commandLink action="listaMusicaAlbum">
+							<f:param name="idArtista" value="#{album.getId()}" />
 							<div style='background-image:url(resources/images/albuns/#{album.getId()}.jpg)' class="listOption">
 								<!-- Vazio somente para imagem --> teste
 							</div>

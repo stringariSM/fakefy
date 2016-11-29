@@ -11,6 +11,8 @@ public interface FaixaDAO {
 
 	List<Faixa> buscaFaixaPorId(Integer id) throws FalhaAcessoAosDadosException;
 	
+	List<Faixa> buscaFaixaPorIdPlaylist(Integer id) throws FalhaAcessoAosDadosException;
+	
 	void closeConnection();
 	
 	void setFactory(DAOFactory factory);

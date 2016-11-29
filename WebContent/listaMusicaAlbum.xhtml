@@ -16,17 +16,17 @@
 		
 		<section class="listagem" id="albuns">
 			<h:form id="listaArtistaForm" prependId="false" style='width:100%;'>
-		    	<p:dataTable id="tableMusicas" value="${artistaBean.todosArtistas}" var="artista"  class="sptFlex listaMusicas">
+		    	<p:dataTable id="tableMusicas" value="${faixaListaBean.faixas}" var="faixa"  class="sptFlex listaMusicas">
 				  	<p:column headerText="Música">
-				  		<h:outputText value="ttttt"/>
+				  		<h:outputText value="#{faixa.getNomeFaixa()}"/>
 					</p:column>		
 					
 					<p:column headerText="Artista">
-				  		<h:outputText value="eeee"/>
+				  		<h:outputText value="#{faixa.getArtista()}"/>
 					</p:column>	
 					
 					<p:column headerText="Álbum">
-				  		<h:outputText value="eeee"/>
+				  		<h:outputText value="#{faixa.getAlbum()}"/>
 					</p:column>	
 					
 					<p:column headerText="">

@@ -14,12 +14,12 @@
 			</div>
 		</header>
 		
-		<section class="listagem" id="musicas">
-			<h:form id="listaArtistasForm" prependId="false" style='width:100%;'>
-		    	<h:dataTable id="box-table-a" value="${artistaBean.todosArtistas}" var="artista" class="sptFlex listagemgroup">
+		<section class="listagem" id="playlists">
+			<h:form id="listaPlaylistsForm" prependId="false" style='width:100%;'>
+		    	<h:dataTable id="box-table-a" value="${playlistBean.todosPlaylists}" var="playlist" class="sptFlex listagemgroup">
 				  	<h:column>
-				  		<h:commandLink action="mantemAlbum">
-							<f:param name="idArtista" value="#{artista.getId()}" />
+				  		<h:commandLink action="listaMusicaPlaylist">
+							<f:param name="idPlaylist" value="#{playlist.getId()}" />
 							<div style='background-image:url(resources/images/artistas/#{artista.getId()}.jpg)' class="listOption">
 								<!-- Vazio somente para imagem -->
 							</div>
@@ -27,7 +27,7 @@
 					</h:column>		
 					
 					<h:column style="display:flex;">
-						<h:outputText value="#{artista.getNomeArtista()}" />
+						<h:outputText value="#{playlist.getNomePlaylist()}" />
 					</h:column>			
 				</h:dataTable>
 			</h:form>

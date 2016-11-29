@@ -7,6 +7,8 @@ public class Faixa {
 	private String  caminho;
 	private Integer id_faixa_album;
 	private Integer ordem;
+	private String  artista;
+	private String  album;
 	
 	public Faixa() {}
 
@@ -57,6 +59,22 @@ public class Faixa {
 
 	public void setOrdem(Integer ordem) {
 		this.ordem = ordem;
+	}
+	
+	public String getArtista() {
+		return artista;
+	}
+
+	public void setArtista(String artista) {
+		this.artista = artista;
+	}
+	
+	public String getAlbum() {
+		return album;
+	}
+
+	public void setAlbum(String album) {
+		this.album = album;
 	}
 			  
 

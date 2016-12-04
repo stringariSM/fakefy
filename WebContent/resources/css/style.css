@@ -484,7 +484,7 @@ table tr th{
 }
 
 .ui-widget-content{
-	background: transparent !important; /*PrimeFaces quer me zoar????*/
+	background: rgba(18, 19, 20, 0.67) !important; /*PrimeFaces quer me zoar????*/
 	color: #FFF;
 	font-weight: 200;
 	border: 0;
@@ -591,4 +591,25 @@ tr.ui-state-hover{
 
 body:-webkit-full-page-media {
     background: transparent !important;
+}
+
+.ui-panelgrid-footer{
+    position: absolute;
+    bottom: 10px;
+    left: 120px;
+}
+
+.ui-selectonemenu label.ui-selectonemenu-label{
+	padding: 15px;
+    font-size: 1.2em;
+}
+
+.ui-selectonemenu .ui-selectonemenu-trigger{
+	background: #FFF !important;
+    border: 0;
+    padding: 0px !important;
+}
+
+.ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield{
+	box-shadow: none !important;
 }

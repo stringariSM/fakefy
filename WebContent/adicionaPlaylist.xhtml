@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/templateFake.xhtml">
+		
+	<ui:define name="body">
+		<header>
+			<h3>Adicionar Músicas</h3>
+		</header>
+	
+
+	  <h:form id="faixaForm" prependId="false" class="panelGrid">
+	  
+    	<h:panelGrid columns="1" cellpadding="5" columnClasses="label, value">
+	        <p:outputLabel value="Nome da PlayList:"/>        
+			<p:inputText id="faixa_NomeMusica" value="#{faixaFormBean.faixa.nomeFaixa}" />
+						
+			<p:commandButton value="Adicionar item" class="botaopadrao"
+						actionListener="#{pedidoFormBean.adicionarItem}"
+						oncomplete="PF('music_dlg').show();" ajax="true" update="music_dlg" />
+			<br /><br /><br />
+			
+        
+       </h:panelGrid>
+       
+       <p:dataTable id="itens_msuicas" value="${pedidoFormBean.pedido.itens}"
+				var="item" rowIndexVar="rowIndex" reflow="true" rows="5">
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Música" />
+					</f:facet>
+					<h:outputText value="#{item.produto.nome}" />
+				</p:column>
+		</p:dataTable>
+		<br /><br />
+		<p:commandButton value="Salvar" class="botaopadrao" action="#{faixaFormBean.salvar}"
+						ajax="false" />
+			<br />
+	</h:form>	
+	
+	<p:dialog id="music_dlg" header="Item" widgetVar="music_dlg"
+			height="200" width="500" resizable="false" responsive="true">
+			<h:form id="music_dlg_form" prependId="false">
+				<p:panelGrid columns="2" layout="grid" styleClass="ui-panelgrid-blank" columnClasses="ui-grid-col-12,ui-grid-col-12">
+					<p:selectOneMenu id="musicas"
+						value="#{faixaFormBean.item.produto}" style="width:100%;border: 0;text-shadow: none;background: #FFF;"
+						converter="omnifaces.SelectItemsConverter">
+						<f:selectItems value="#{pedidoFormBean.produtos}" var="produto"
+							itemLabel="#{produto.nome}" itemValue="#{produto}" />
+					</p:selectOneMenu>
+					
+					<f:facet name="footer">
+						<p:commandButton value="Salvar" class="botaopadrao"
+							action="#{pedidoFormBean.atualizaLista()}" update="itens_msuicas"
+							oncomplete="PF('music_dlg').hide();" />
+						<p:commandButton value="Cancelar" onclick="PF('music_dlg').hide();" class="botaopadrao"/>
+					</f:facet>
+				</p:panelGrid>
+			</h:form>
+		</p:dialog>		
+				
+	</ui:define>
+</ui:composition>

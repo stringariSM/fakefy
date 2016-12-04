@@ -10,7 +10,7 @@
 			<h3>Músicas</h3>
 
 			<div class="alignRight">
-				<a href="adicionaMusica.xhtml" id="btnAdicionarMusica" title="Adicionar música" class="btn-red">Adicionar Música</a>
+				<a href="adicionaPlaylist.xhtml" id="btnAdicionarMusica" title="Adicionar música" class="btn-red">Adicionar Playlist</a>
 			</div>
 		</header>
 		
@@ -20,7 +20,7 @@
 				  	<h:column>
 				  		<h:commandLink action="listaMusicaPlaylist">
 							<f:param name="idPlaylist" value="#{playlist.getId()}" />
-							<div style='background-image:url(resources/images/artistas/#{artista.getId()}.jpg)' class="listOption">
+							<div style='background-image:url(resources/images/playlist.jpg)' class="listOption">
 								<!-- Vazio somente para imagem -->
 							</div>
 						</h:commandLink>

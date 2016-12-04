@@ -9,6 +9,7 @@ public class Faixa {
 	private Integer ordem;
 	private String  artista;
 	private String  album;
+	private String caminho_foto_album;
 	
 	private Artista artistas;
 	
@@ -16,13 +17,14 @@ public class Faixa {
 	
 	public Faixa() {}
 
-	public Faixa(Integer id_faixa, String nome_faixa, String caminho, Integer id_faixa_album, Integer ordem) {
+	public Faixa(Integer id_faixa, String nome_faixa, String caminho, Integer id_faixa_album, Integer ordem, String caminho_foto_album) {
 		super();
 		this.id_faixa = id_faixa;
 		this.nomeFaixa = nome_faixa;
 		this.caminho = caminho;
 		this.idFaixaAlbum = id_faixa_album;
 		this.ordem = ordem;
+		this.caminho_foto_album = caminho_foto_album;
 	}
 
 	public Integer getId() {
@@ -90,6 +92,14 @@ public class Faixa {
 
 	public void setAlbum(String album) {
 		this.album = album;
+	}
+	
+	public String getCaminhoFotoAlbum() {
+		return caminho_foto_album;
+	}
+
+	public void setCaminhoFotoAlbum(String caminho_foto_album) {
+		this.caminho_foto_album = caminho_foto_album;
 	}
 			  
 

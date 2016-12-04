@@ -47,6 +47,10 @@ public class FaixaFormBean extends AbstractBean implements Serializable {
 			
 		this.faixa = faixa;
 		
+<<<<<<< HEAD
+=======
+		this.faixa.setIdFaixaAlbum(albuns.get(0).getId());
+>>>>>>> branch 'master' of https://github.com/stringariSM/fakefy.git
 		
 	}
 	

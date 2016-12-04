@@ -56,17 +56,59 @@
 					<small>Álbum YYY</small>
 				</header>
 
-				<audio controls="controls">
-					<source src="musics/track1.mp3" type="audio/mpeg" />
+				<audio controls="controls" id="oggSource">
+					<source src="resources\musics\track1.mp3" type="audio/mpeg" />
 					Your browser does not support the audio element.
 				</audio>
+				
 			</section>
 		</div>
 	</div>
 	
+	<h:outputScript library="primefaces" name="jquery/jquery.js" />
     <!-- <h:outputScript library="lib" name="jquery/jquery-3.1.0.min.js" /> -->
 	<h:outputScript library="lib" name="listjs/listjs.min.js" />
 	<h:outputScript library="lib" name="bootstrap/js/bootstrap.min.js" />
 	<h:outputScript library="js" name="scripts.js" />
+	
+	<script>
+	$(document).ready(function(){
+		$(".btnReproduzir").click(function(){
+			var audio = document.getElementById('oggSource');
+			audio.src = 
+		        'resources/musics/' + 
+		        $(this).data('value');
+			audio.load();
+			audio.play();
+		});
+
+		$(".btnReproduzirTodos").click(function(){
+			var audio = document.getElementById('oggSource');
+
+			var arrayMusics = new Array();
+			$(".btnReproduzir").each(function(){
+				if($(this).data("value") != null){
+					if($(this).data("value") != "null"){
+						arrayMusics.push('resources/musics/' + $(this).data('value'));
+					}
+				}
+			});
+
+			audio.src = arrayMusics[0];
+			audio.load();
+			audio.play();
+			
+			var current = 1;
+			audio.addEventListener('ended',function(e){
+			    console.log(arrayMusics[current], current);
+			    audio.src = arrayMusics[current];
+				audio.load();
+				audio.play();
+				current++;
+			});
+			console.log(arrayMusics);
+		});
+	});	
+	</script>
 </h:body>
 </html>

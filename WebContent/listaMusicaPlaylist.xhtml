@@ -29,13 +29,11 @@
 				  		<h:outputText value="#{faixa.getAlbum()}"/>
 					</p:column>	
 					
-					<p:column headerText="">
-						<div class="alignCenter btnReproduzir">
-					  		<p:link value="Reproduzir">
-					  			<f:param name="lnkReproduzir" value="xx"/>
-					  		</p:link>
+					<p:column headerText="" align="center">
+						<div class="alignCenter btnReproduzir" data-value="#{faixa.getCaminho()}">
+					  		Reproduzir
 				  		</div>
-					</p:column>			
+					</p:column>				
 				</p:dataTable>
 			</h:form>
 		</section>

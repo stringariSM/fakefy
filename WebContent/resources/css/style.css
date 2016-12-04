@@ -413,6 +413,7 @@ table tr th{
 	display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
 	
 	flex: 1 1 100%;
+	flex-wrap:wrap;
 }
 
 .listagemgroup tr {
@@ -504,11 +505,22 @@ table tr th{
 	text-align:center;
 }
 
-.btnReproduzir>a{
+.btnReproduzir{
     padding: 10px;
     background: #993028;
     color: #FFF;
     border-radius: 130px;
+    cursor:pointer;
+}
+
+.btnReproduzirTodos{
+    background: #993028;
+    padding: 5px;
+    text-align: center;
+    color: #FFF;
+    margin: 20px;
+    cursor: pointer;
+    border-radius: 25px;
 }
 
 .ui-fileupload-filename{
@@ -575,4 +587,8 @@ tr.ui-state-hover{
 }
 .sptBody{
 	height:100%;
+}
+
+body:-webkit-full-page-media {
+    background: transparent !important;
 }

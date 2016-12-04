@@ -10,6 +10,10 @@ public class Faixa {
 	private String  artista;
 	private String  album;
 	
+	private Artista artistas;
+	
+	private Album albuns;
+	
 	public Faixa() {}
 
 	public Faixa(Integer id_faixa, String nome_faixa, String caminho, Integer id_faixa_album, Integer ordem) {
@@ -67,6 +71,17 @@ public class Faixa {
 
 	public void setArtista(String artista) {
 		this.artista = artista;
+	}
+	
+	public Album getAlbuns() {
+		return albuns;
+	}
+
+	public void setAlbuns(Album albuns) {
+		this.albuns = albuns;
+		
+		this.idFaixaAlbum = albuns.getId();
+		
 	}
 	
 	public String getAlbum() {

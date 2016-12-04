@@ -18,6 +18,7 @@ import web.ucs.model.Pedido;
 import web.ucs.model.Produto;
 import web.ucs.service.FaixaService;
 import web.ucs.service.PedidosService;
+import web.ucs.service.AlbumService;
 
 @ManagedBean(name = "faixaFormBean")
 @ViewScoped
@@ -34,15 +35,19 @@ public class FaixaFormBean extends AbstractBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		System.out.println("Chamou INIT()");
-		faixa = new Faixa();
-				
+		
+		albuns = AlbumService.getInstance().getTodosAlbuns();		
+		faixa = new Faixa();				
 	}
 	
 	public void setFaixa(Faixa faixa) {
 		
 		System.out.println("Chamou set faixa()");
 		
+			
 		this.faixa = faixa;
+		
+		this.faixa.setIdFaixaAlbum(albuns.get(index));
 		
 	}
 	
@@ -62,6 +67,10 @@ public class FaixaFormBean extends AbstractBean implements Serializable {
 		faixa.setIdFaixaAlbum(albuns.get(0).getId());
 		
 	}
+	
+	public List<Album> getSelectedThemes() {
+        return albuns;
+    }
 		
 	public Faixa getFaixa() {
 		
@@ -69,7 +78,28 @@ public class FaixaFormBean extends AbstractBean implements Serializable {
 		
 		return faixa;
 	}
-
+	
+    public List<Album> getAlbuns() {
+		
+		System.out.println("Chamou set faixa()");
+		
+		return albuns;
+	}
+    
+public List<Album> getTodosAlbuns() {
+		
+		System.out.println("Chamou set faixa()");
+		
+		return albuns;
+	}
+    
+    public void setAlbuns(List<Album> albuns) {
+		
+		this.albuns = albuns;
+		
+		faixa.setIdFaixaAlbum(albuns.get(0).getId());
+		
+	}
 	
 	// Métodos chamados na página
 	

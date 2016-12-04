@@ -28,22 +28,16 @@
 					ajax="false" />
 		<br />
                 
+              
         
-        <p:outputLabel for="advanced" value="Advanced:" />
-        <p:selectManyMenu id="advanced" value="#{albumManyView.selectedThemes}" converter="albumConverter"
-                          var="t" filter="true" filterMatchMode="contains" showCheckbox="true">
-            <f:selectItems value="#{albumManyView.themes}" var="theme" itemLabel="#{theme.getNomeAlbum()}" itemValue="#{theme}" />
-             
-            <p:column>
-                <h:outputText styleClass="ui-theme ui-theme-bootstrap" />
-            </p:column>            
-            <p:column>
-                <h:outputText value="#{t.getNomeAlbum()}" />                   
-            </p:column> 
-                                                                      
-        </p:selectManyMenu>
-                               
-        <p:separator />
+        <p:selectOneMenu id="selec_album"
+		  value="#{faixaFormBean.faixa.albuns}" style="width:125px"
+			converter="omnifaces.SelectItemsConverter">
+			<f:selectItems value="#{faixaFormBean.todosAlbuns}" var="album"
+			itemLabel="#{album.getNomeAlbum()}" itemValue="#{album}" />
+		</p:selectOneMenu>
+        
+        
  
    
         				

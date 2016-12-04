@@ -51,6 +51,17 @@ public class AlbumService {
 		return albuns;
 	}
 	
+	public List<Album> getTodosAlbuns() {
+		AlbumDAO dao = factory.getAlbumDAO();
+		try {
+			this.albuns = dao.buscaTodos();
+		} catch (FalhaAcessoAosDadosException e) {
+			e.printStackTrace();
+		}
+		
+		return albuns;
+	}
+	
 	private AlbumService() {
 		
 	}

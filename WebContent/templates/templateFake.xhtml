@@ -49,11 +49,10 @@
 			
 			<section class="sptAudio">
 				<figure class="capaalbum">
-					<img src="images/albuns/1.jpg" alt="Nome do Álbum" title="Nome do Álbum"/>
+					<img src="resources/images/logo.png" alt="Nome do Álbum" title="Nome do Álbum" id="imageAlbum"/>
 				</figure>
 				<header class="infosMusic">
 					<h3>Música XXX</h3>
-					<small>Álbum YYY</small>
 				</header>
 
 				<audio controls="controls" id="oggSource">
@@ -66,7 +65,6 @@
 	</div>
 	
 	<h:outputScript library="primefaces" name="jquery/jquery.js" />
-    <!-- <h:outputScript library="lib" name="jquery/jquery-3.1.0.min.js" /> -->
 	<h:outputScript library="lib" name="listjs/listjs.min.js" />
 	<h:outputScript library="lib" name="bootstrap/js/bootstrap.min.js" />
 	<h:outputScript library="js" name="scripts.js" />
@@ -80,30 +78,47 @@
 		        $(this).data('value');
 			audio.load();
 			audio.play();
+
+			$(".infosMusic>h3").html($(this).data("name"));
+			$("#imageAlbum").attr('src', "resources/images/albuns/" + $(this).data("album"));
+			console.log($(this).data("album"));
 		});
 
 		$(".btnReproduzirTodos").click(function(){
 			var audio = document.getElementById('oggSource');
 
 			var arrayMusics = new Array();
+			arrayMusics.push("caminho");
+			arrayMusics.push("nome");
+			arrayMusics.push("album");
+
+			arrayMusics["caminho"] = new Array();
+			arrayMusics["nome"] = new Array();
+			arrayMusics["album"] = new Array();
+			
 			$(".btnReproduzir").each(function(){
 				if($(this).data("value") != null){
 					if($(this).data("value") != "null"){
-						arrayMusics.push('resources/musics/' + $(this).data('value'));
+						arrayMusics["caminho"].push('resources/musics/' + $(this).data('value'));
+						arrayMusics["nome"].push($(this).data('name'));
+						arrayMusics["album"].push($(this).data('album'));
 					}
 				}
 			});
 
-			audio.src = arrayMusics[0];
+			audio.src = arrayMusics["caminho"][0];
 			audio.load();
 			audio.play();
-			
+			$(".infosMusic>h3").html(arrayMusics["nome"][0]);
+			$("#imageAlbum").attr('src', "resources/images/albuns/" + arrayMusics["album"][0]);
 			var current = 1;
 			audio.addEventListener('ended',function(e){
-			    console.log(arrayMusics[current], current);
-			    audio.src = arrayMusics[current];
+			    console.log(arrayMusics["caminho"][current], current);
+			    audio.src = arrayMusics["caminho"][current];
 				audio.load();
 				audio.play();
+				$(".infosMusic>h3").html(arrayMusics["nome"][current]);
+				$("#imageAlbum").attr('src', "resources/images/albuns/" + arrayMusics["album"][current]);
 				current++;
 			});
 			console.log(arrayMusics);

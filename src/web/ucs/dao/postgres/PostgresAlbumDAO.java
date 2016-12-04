@@ -42,7 +42,7 @@ public class PostgresAlbumDAO extends AbstractDAO implements AlbumDAO {
 		try {
 
 			pstmt = conn
-					.prepareStatement("select ID_ALBUM,NOME_ALBUM,ANO,ID_ARTISTA_ALBUM,ID_ALBUM_FOTO from ALBUM where id_artista_album = ?");
+					.prepareStatement("select ID_ALBUM,NOME_ALBUM,ANO,ID_ARTISTA_ALBUM,ID_ALBUM_FOTO, CAMINHO_FOTO_ALBUM from ALBUM where id_artista_album = ?");
 			pstmt.setInt(1, id);
 			rs = pstmt.executeQuery();
 
@@ -50,7 +50,8 @@ public class PostgresAlbumDAO extends AbstractDAO implements AlbumDAO {
 				Album album = new Album();
 				album.setId(rs.getInt("ID_ALBUM"));
 				album.setNomeAlbum(rs.getString("NOME_ALBUM"));
-				 			
+				album.setCaminho(rs.getString("CAMINHO_FOTO_ALBUM"));
+				
 				albuns.add(album);
 			}
 
@@ -79,7 +80,7 @@ public class PostgresAlbumDAO extends AbstractDAO implements AlbumDAO {
 		try {
 
 			pstmt = conn
-					.prepareStatement("select ID_ALBUM,NOME_ALBUM,ANO,ID_ARTISTA_ALBUM,ID_ALBUM_FOTO from ALBUM");
+					.prepareStatement("select ID_ALBUM,NOME_ALBUM,ANO,ID_ARTISTA_ALBUM,ID_ALBUM_FOTO, CAMINHO_FOTO_ALBUM from ALBUM");
 			
 			rs = pstmt.executeQuery();
 
@@ -87,7 +88,8 @@ public class PostgresAlbumDAO extends AbstractDAO implements AlbumDAO {
 				Album album = new Album();
 				album.setId(rs.getInt("ID_ALBUM"));
 				album.setNomeAlbum(rs.getString("NOME_ALBUM"));
-				 			
+				album.setCaminho(rs.getString("CAMINHO_FOTO_ALBUM"));
+				
 				albuns.add(album);
 			}
 

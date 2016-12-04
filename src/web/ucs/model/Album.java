@@ -6,15 +6,17 @@ public class Album {
 	private String  nome_album;
 	private Integer ano;
 	private Integer id_artista_album;	
+	private String caminho;
 	
 	public Album() {}
 
-	public Album(Integer id_album, String nome_album, Integer ano, Integer id_artista_album) {
+	public Album(Integer id_album, String nome_album, Integer ano, Integer id_artista_album, String caminho) {
 		super();
 		this.id_album = id_album;
 		this.nome_album = nome_album;
 		this.ano = ano;
-		this.id_artista_album = id_artista_album;		
+		this.id_artista_album = id_artista_album;	
+		this.caminho = caminho;	
 	}
 
 	public Integer getId() {
@@ -47,6 +49,14 @@ public class Album {
 
 	public void setIdArtistaPais(Integer id_artista_album) {
 		this.id_artista_album = id_artista_album;
+	}
+	
+	public String getCaminho() {
+		return caminho;
+	}
+
+	public void setCaminho(String caminho) {
+		this.caminho = caminho;
 	}
 			  
 

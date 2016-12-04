@@ -29,6 +29,7 @@ public class AlunoBean {
 	
 	public Aluno getAluno() {
 		return aluno;
+		
 	}
 
 	public void setAluno(Aluno aluno) {

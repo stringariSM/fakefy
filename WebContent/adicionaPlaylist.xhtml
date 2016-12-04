@@ -21,7 +21,7 @@
 			<p:commandButton value="Adicionar item" class="botaopadrao"
 						actionListener="#{pedidoFormBean.adicionarItem}"
 						oncomplete="PF('music_dlg').show();" ajax="true" update="music_dlg" />
-			
+			<br /><br /><br />
 			
         
        </h:panelGrid>
@@ -35,7 +35,7 @@
 					<h:outputText value="#{item.produto.nome}" />
 				</p:column>
 		</p:dataTable>
-		
+		<br /><br />
 		<p:commandButton value="Salvar" class="botaopadrao" action="#{faixaFormBean.salvar}"
 						ajax="false" />
 			<br />
@@ -46,7 +46,7 @@
 			<h:form id="music_dlg_form" prependId="false">
 				<p:panelGrid columns="2" layout="grid" styleClass="ui-panelgrid-blank" columnClasses="ui-grid-col-12,ui-grid-col-12">
 					<p:selectOneMenu id="musicas"
-						value="#{pedidoFormBean.item.produto}" style="width:100%;border: 0;text-shadow: none;background: #FFF;"
+						value="#{faixaFormBean.item.produto}" style="width:100%;border: 0;text-shadow: none;background: #FFF;"
 						converter="omnifaces.SelectItemsConverter">
 						<f:selectItems value="#{pedidoFormBean.produtos}" var="produto"
 							itemLabel="#{produto.nome}" itemValue="#{produto}" />

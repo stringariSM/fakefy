@@ -573,3 +573,6 @@ tr.ui-state-hover{
     font-size: 1.2em !important;
     font-weight: 100 !important;
 }
+.sptBody{
+	height:100%;
+}

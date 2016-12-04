@@ -15,33 +15,33 @@
 	  
     	<h:panelGrid columns="1" cellpadding="5" columnClasses="label, value">
 	        <p:outputLabel value="Nome do Album"/>        
-			<p:inputText id="nome_artista" value="#{faixaFormBean.faixa.nomeFaixa}" />
+			<p:inputText id="nome_artista" value="#{albumFormBean.album.nomeAlbum}" />
 			
 			<p:outputLabel value="Ano"/>        
-			<p:inputText id="ano_artista" value="#{faixaFormBean.faixa.nomeFaixa}" />
+			<p:inputText id="ano_artista" value="#{albumFormBean.album.ano}" />
 			
 			<h:form>
-			    <p:fileUpload fileUploadListener="#{artistaFormBean.handleFileUpload}" mode="advanced"
+			    <p:fileUpload fileUploadListener="#{albumFormBean.handleFileUpload}" mode="advanced"
 			                  update="messages" auto="true" sizeLimit="1000000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
 			 
 			    <p:growl id="messages" showDetail="true" />
 			    
-			    <p:outputLabel for="advanced" value="Artista " />
-		        <a href="adicionaAlbum.xhtml" id="btnAdicionarArtista" title="Adicionar artista" class="btn-red btn-block">
+			    <p:outputLabel for="selec_album" value="Album " />
+		        
+		        <p:selectOneMenu id="selec_album"
+		        value="#{albumFormBean.album.artistas}" style="width:125px"
+			     converter="omnifaces.SelectItemsConverter">
+			    <f:selectItems value="#{albumFormBean.todosArtistas}" var="artista"
+			    itemLabel="#{artista.getNomeArtista()}" itemValue="#{artista}" />
+		        </p:selectOneMenu>
+		        
+		        <a href="adicionaArtista.xhtml" id="btnAdicionarArtista" title="Adicionar artista" class="btn-red btn-block">
 		        	Adicionar Artista
 	        	</a>
 	        	
-		        <p:selectManyMenu id="advanced" value="#{selectManyView.selectedThemes}" converter="themeConverter"
-	                          var="t" filter="true" filterMatchMode="contains" showCheckbox="true">
-		            <f:selectItems value="#{selectManyView.themes}" var="theme" itemLabel="#{theme.getNomeArtista()}" itemValue="#{theme}" />
-		                         
-		            <p:column>
-		                <h:outputText value="#{t.getNomeArtista()}" />
-		            </p:column>
-	        	</p:selectManyMenu>
 	            
 	            <p:separator />
-			    <p:commandButton value="Salvar" actionListener="#{artistaBean.salvar}"
+			    <p:commandButton value="Salvar" actionListener="#{albumFormBean.salvar}"
 							ajax="false" class="botaopadrao"/>
 			</h:form>
 	       

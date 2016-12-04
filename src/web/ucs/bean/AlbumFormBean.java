@@ -1,6 +1,5 @@
 package web.ucs.bean;
 
-
 import java.util.List;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -28,17 +27,17 @@ import web.ucs.service.FaixaService;
 import web.ucs.service.PedidosService;
 import web.ucs.service.ArtistaService;
 
-@ManagedBean(name = "artistaFormBean")
+@ManagedBean(name = "albumFormBean")
 @ViewScoped
-public class ArtistaFormBean extends AbstractBean implements Serializable {
+public class AlbumFormBean extends AbstractBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Pedido pedido;
-	private Faixa faixa;	
-	private Artista artista;
+	private Faixa faixa;
 	
-	private List<Album> albuns;
+	private Album album;
 	
+	private List<Artista> artistas;
 	private ItemPedido item;
 	private boolean edicaoItem = false;
 	private boolean edicaoPedido = false;
@@ -47,11 +46,62 @@ public class ArtistaFormBean extends AbstractBean implements Serializable {
 	public void init() {
 		System.out.println("Chamou INIT()");
 		
-			
-		artista = new Artista();				
+		artistas = ArtistaService.getInstance().getTodosArtistas();		
+		album = new Album();				
 	}
 	
-   
+     public void setAlbum(Album album) {
+		
+		System.out.println("Chamou set faixa()");
+		
+			
+		this.album = album;		
+	}
+     
+    public Album getAlbum() {
+ 		 		
+ 		return album;		
+ 	}
+	
+		
+	public Faixa getFaixa() {
+		
+		System.out.println("Chamou set faixa()");
+		
+		return faixa;
+	}
+	
+    public List<Artista> getArtistas() {
+		
+		System.out.println("Chamou set faixa()");
+		
+		return artistas;
+	}
+    
+   public List<Artista> getTodosArtistas() {
+		
+		System.out.println("Chamou set faixa()");
+		
+		return artistas;
+	}
+    
+    public void setArtistas(List<Artista> artistas) {
+		
+		this.artistas = artistas;
+						
+	}
+	
+	// Métodos chamados na página
+	
+	public String salvar() {
+		
+		System.out.println("Chamou salvar ALBUM()");
+		
+		AlbumService.getInstance().salvaAlbum(album);
+		return "listaFaixas";
+	}
+	
+			
 	private Part uploadedFile; 
 	public void handleFileUpload(FileUploadEvent event) throws IOException {
 		UploadedFile uploadedFile = event.getFile();
@@ -59,12 +109,14 @@ public class ArtistaFormBean extends AbstractBean implements Serializable {
 	    String contentType = uploadedFile.getContentType();
 	    byte[] contents = uploadedFile.getContents();
 	    
-	    String strFilePath = "C:\\Users\\gabri\\git\\fakefy\\WebContent\\resources\\images\\artistas\\"+fileName+".jpg";
+	    String strFilePath = "C:\\Users\\Usuario\\git\\fakefy\\WebContent\\resources\\images\\albuns\\"+fileName+".jpg";
 	    FileOutputStream fos = new FileOutputStream(strFilePath);
 	    fos.write(contents);
 	    fos.close();
 	    
-	    this.artista.setCaminhoFoto(fileName);
+	    System.out.println("Chamou salvar ALBUM FOTO()");
+	    
+	    this.album.setCaminhoFoto(fileName);
 
         FacesMessage message = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
         FacesContext.getCurrentInstance().addMessage(null, message);

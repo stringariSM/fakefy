@@ -1,7 +1,7 @@
 <project name="fakefy" basedir="." default="deploy">
 
 	<!-- Declara as propriedades do build -->
-	<property name="jboss.server.home" value="C:\Users\gabri\eclipse\wildfly-10.1.0.Final" />
+	<property name="jboss.server.home" value="C:\wildfly-10.1.0.Final" />
 	<property name="jboss.lib.dir" value="${jboss.server.home}/modules" />
 	<property name="jboss.deploy.dir" value="${jboss.server.home}/standalone/deployments" />
 	<property name="classes.dir" value="WebContent/WEB-INF/classes" />

@@ -47,10 +47,8 @@ public class FaixaFormBean extends AbstractBean implements Serializable {
 			
 		this.faixa = faixa;
 		
-		this.faixa.setIdFaixaAlbum(albuns.get(index));
 		
 	}
-	
 	
 	public List<Album> getSelectedAlbum() {
 				
@@ -86,7 +84,7 @@ public class FaixaFormBean extends AbstractBean implements Serializable {
 		return albuns;
 	}
     
-public List<Album> getTodosAlbuns() {
+   public List<Album> getTodosAlbuns() {
 		
 		System.out.println("Chamou set faixa()");
 		

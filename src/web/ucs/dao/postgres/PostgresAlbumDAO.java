@@ -16,6 +16,7 @@ import web.ucs.dao.intf.AlbumDAO;
 import web.ucs.dao.intf.ArtistaDAO;
 import web.ucs.model.Album;
 import web.ucs.model.Artista;
+import web.ucs.model.Faixa;
 
 
 public class PostgresAlbumDAO extends AbstractDAO implements AlbumDAO {
@@ -101,6 +102,56 @@ public class PostgresAlbumDAO extends AbstractDAO implements AlbumDAO {
 		}
 
 		return albuns;
+	}
+	
+	@Override
+	public Integer insere(Album album) throws FalhaAcessoAosDadosException {
+
+		Integer idInserido = null;
+
+		if (album != null) {
+
+			PreparedStatement pstmt = null;
+			Statement stmt = null;
+			ResultSet rs = null;
+			
+			try {
+				
+				conn.setAutoCommit(false);
+
+				pstmt = conn
+						.prepareStatement("insert into album(ID_ALBUM,NOME_ALBUM,ANO,ID_ARTISTA_ALBUM,ID_ALBUM_FOTO,CAMINHO_FOTO_ALBUM) values (0, ?, ?,?,0,?)");    
+
+				pstmt.setString(1, album.getNomeAlbum());
+				pstmt.setInt(2, album.getAno());
+				pstmt.setInt(3, album.getIdArtistaAlbum());
+				pstmt.setString(4, album.getCaminhoFoto());				
+
+				pstmt.executeUpdate();
+											
+				stmt = conn.createStatement();
+				rs = stmt.executeQuery("select ALBUM_SEQ.currval from dual");
+				if(rs.next()) {
+					idInserido = rs.getInt(1);
+				}
+				
+				conn.commit();
+								
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+				throw new FalhaAcessoAosDadosException(
+						"Falha ao inserir registro", e);
+			} finally {
+				this.fechaPreparedStatement(pstmt);
+				this.fechaStatement(stmt);
+				this.fechaResultSet(rs);
+				closeConnection();
+			}
+		} else {
+			throw new FalhaAcessoAosDadosException("Registro nulo");
+		}
+		return idInserido;
 	}
 	
  

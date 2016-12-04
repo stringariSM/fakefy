@@ -11,77 +11,41 @@
 			<h3>Adicionar Músicas</h3>
 		</header>
 	
-<<<<<<< HEAD
-	  <h:form id="faixaForm" prependId="false">
-    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
-                
-        
-        <p:outputLabel value="Nome da Música:"/>        
-		<p:inputText id="faixa_NomeMusica" value="#{faixaFormBean.faixa.nomeFaixa}" />
-					
-		<p:outputLabel value="Caminho:"/>
-		<p:inputText id="faixa_Caminho" value="#{faixaFormBean.faixa.caminho}" />
-		
-		<p:outputLabel value="Ordem:"/>
-		<p:inputText id="faixa_Ordem" value="#{faixaFormBean.faixa.ordem}" />
-		
-		<p:commandButton value="Salvar" action="#{faixaFormBean.salvar}"
-					ajax="false" />
-		<br />
-                
-              
-        
-        <p:selectOneMenu id="selec_album"
-		  value="#{faixaFormBean.faixa.albuns}" style="width:125px"
-			converter="omnifaces.SelectItemsConverter">
-			<f:selectItems value="#{faixaFormBean.todosAlbuns}" var="album"
-			itemLabel="#{album.getNomeAlbum()}" itemValue="#{album}" />
-		</p:selectOneMenu>
-        
-        
- 
-   
-        				
-=======
+ 		
 	  <h:form id="faixaForm" prependId="false" class="panelGrid">
 	  
     	<h:panelGrid columns="1" cellpadding="5" columnClasses="label, value">
 	        <p:outputLabel value="Nome da Música:"/>        
 			<p:inputText id="faixa_NomeMusica" value="#{faixaFormBean.faixa.nomeFaixa}" />
-			
-			<p:outputLabel value="Id Album:"/>
-			<p:inputText id="faixa_IdAlbumFaixa" value="#{faixaFormBean.faixa.idFaixaAlbum}" />
-			
+						
 			<p:outputLabel value="Caminho:"/>
 			<p:inputText id="faixa_Caminho" value="#{faixaFormBean.faixa.caminho}" />
 			
 			<p:outputLabel value="Ordem:"/>
 			<p:inputText id="faixa_Ordem" value="#{faixaFormBean.faixa.ordem}" />
 
-	        <p:outputLabel for="advanced" value="Albuns " />
+                <p:outputLabel for="selec_album" value="Albuns " />
+        	
+        	<p:selectOneMenu id="selec_album"
+		  value="#{faixaFormBean.faixa.albuns}" style="width:125px"
+			converter="omnifaces.SelectItemsConverter">
+			<f:selectItems value="#{faixaFormBean.todosAlbuns}" var="album"
+			itemLabel="#{album.getNomeAlbum()}" itemValue="#{album}" />
+		</p:selectOneMenu>
+	        
 	        <a href="adicionaAlbum.xhtml" id="btnAdicionarArtista" title="Adicionar artista" class="btn-red btn-block">
 	        	Adicionar Album
         	</a>
         	
-	        <p:selectManyMenu id="advanced" value="#{albumManyView.selectedThemes}" converter="albumConverter"
-                          var="t" filter="true" filterMatchMode="contains" showCheckbox="true">
-            <f:selectItems value="#{albumManyView.themes}" var="theme" itemLabel="#{theme.getNomeAlbum()}" itemValue="#{theme}" />
-             
-            <p:column>
-                <h:outputText styleClass="ui-theme ui-theme-bootstrap" />
-            </p:column>            
-            <p:column>
-                <h:outputText value="#{t.getNomeAlbum()}" />                   
-            </p:column> 
-                                                                      
-        </p:selectManyMenu>
+        	
+        		        
 	        
 	        <p:separator />
 	 
 		    <p:commandButton value="Salvar" action="#{faixaFormBean.salvar}"
 						ajax="false" class="botaopadrao"/>
 			<br />			
->>>>>>> branch 'master' of https://github.com/stringariSM/fakefy.git
+
        </h:panelGrid>
 	</h:form>			
 				

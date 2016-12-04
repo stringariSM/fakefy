@@ -6,77 +6,58 @@ import java.util.List;
 import web.ucs.dao.FiltroProduto;
 import web.ucs.dao.exceptions.FalhaAcessoAosDadosException;
 import web.ucs.dao.intf.AlbumDAO;
+import web.ucs.dao.intf.ArtistaDAO;
 import web.ucs.dao.intf.DAOFactory;
 import web.ucs.dao.intf.DadoBinarioDAO;
-import web.ucs.dao.intf.FaixaDAO;
 import web.ucs.dao.intf.ItemPedidoDAO;
 import web.ucs.dao.intf.PedidoDAO;
 import web.ucs.dao.intf.ProdutoDAO;
 import web.ucs.dao.postgres.PostgresDAOFactory;
 import web.ucs.model.Album;
+import web.ucs.model.Artista;
 import web.ucs.model.DadoBinario;
-import web.ucs.model.Faixa;
 import web.ucs.model.ItemPedido;
 import web.ucs.model.Pedido;
 import web.ucs.model.Produto;
 
-public class AlbumService {
+public class ArtistaService {
 
-	private static AlbumService instance;
+	private static ArtistaService instance;
 	private DAOFactory factory = new PostgresDAOFactory();
 
-	public static AlbumService getInstance() {
+	public static ArtistaService getInstance() {
 		if (instance == null) {
-			instance = new AlbumService();
+			instance = new ArtistaService();
 		}
 		return instance;
 	}
 
-	private List<Album> albuns;	
+	private List<Artista> artistas;	
 
-	public List<Album> getAlbuns() {
-		return albuns;
+	public List<Artista> getArtistas() {
+		return artistas;
 	}
 
-	public void setAlbuns(List<Album> albuns) {
-		this.albuns = albuns;
+	public void setArtistas(List<Artista> artistas) {
+		this.artistas = artistas;
 	}
 	
-	public List<Album> getAlbuns(int id) {
-		AlbumDAO dao = factory.getAlbumDAO();
+		
+	public List<Artista> getTodosArtistas() {
+		ArtistaDAO dao = factory.getArtistaDAO();
 		try {
-			this.albuns = dao.buscaAlbumPorId(id);
+			this.artistas = dao.buscaTodos();
 		} catch (FalhaAcessoAosDadosException e) {
 			e.printStackTrace();
 		}
 		
-		return albuns;
+		return artistas;
 	}
 	
-	public List<Album> getTodosAlbuns() {
-		AlbumDAO dao = factory.getAlbumDAO();
-		try {
-			this.albuns = dao.buscaTodos();
-		} catch (FalhaAcessoAosDadosException e) {
-			e.printStackTrace();
-		}
-		
-		return albuns;
-	}
-	
-	private AlbumService() {
+	private ArtistaService() {
 		
 	}
 	
-	private void inicializaAlbuns(int id) {
-
-		AlbumDAO dao = factory.getAlbumDAO();
-		try {
-			this.albuns = dao.buscaAlbumPorId(id);
-		} catch (FalhaAcessoAosDadosException e) {
-			e.printStackTrace();
-		}
-	}
 
 	
 	public void insereDadoBinario(DadoBinario dado)
@@ -129,33 +110,6 @@ public class AlbumService {
 			e.printStackTrace();
 		}
 		return dados;
-	}
-	
-	public void salvaAlbum(Album album) {
-		System.out.println("chamou salvaALBUM");
-		if (album.getId() == null) {
-			System.out.println("chamou INSEREALBUM");
-			insereAlbum(album);			
-		}	
-		}
-	
-	public void insereAlbum(Album album) {
-
-		System.out.println("chamou inserePedido");
-
-		AlbumDAO dao = factory.getAlbumDAO();
-
-		try {
-			
-			System.out.println("chamou DAO INSEREALBUM");
-			
-			Integer idAlbum = dao.insere(album);
-			album.setId(idAlbum);			
-			
-
-		} catch (FalhaAcessoAosDadosException e) {
-			e.printStackTrace();
-		}
 	}
 
 }

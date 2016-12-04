@@ -2,7 +2,7 @@ package web.ucs.model;
 
 public class Artista {
 	
-	private Integer id_artista;
+	private Integer id;
 	private String  nome_artista;
 	private Integer ano_nascimento_formacao;
 	private Integer id_artista_pais;
@@ -13,7 +13,7 @@ public class Artista {
 	public Artista(Integer id_artista, String nome_artista, Integer ano_nascimento_formacao, Integer id_artista_pais,
 			       Integer id_artista_foto ) {
 		super();
-		this.id_artista = id_artista;
+		this.id = id_artista;
 		this.nome_artista = nome_artista;
 		this.ano_nascimento_formacao = ano_nascimento_formacao;
 		this.id_artista_pais = id_artista_pais;
@@ -21,11 +21,11 @@ public class Artista {
 	}
 
 	public Integer getId() {
-		return id_artista;
+		return id;
 	}
 
 	public void setId(Integer id) {
-		this.id_artista = id;
+		this.id = id;
 	}
 
 	public String getNomeArtista() {

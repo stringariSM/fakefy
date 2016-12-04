@@ -67,6 +67,27 @@ public class FaixaService {
 		}
 	}
 
+	public void salvaFaixa(Faixa faixa) {
+		System.out.println("chamou salvaPedido");
+		if (faixa.getId() == null) {
+			insereFaixa(faixa);			
+		}	
+		}
+	
+	public void insereFaixa(Faixa faixa) {
+
+		System.out.println("chamou inserePedido");
+
+		FaixaDAO dao = factory.getFaixaDAO();
+
+		try {
+			Integer idFaixa = dao.insere(faixa);
+			faixa.setId(idFaixa);			
+
+		} catch (FalhaAcessoAosDadosException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	public void insereDadoBinario(DadoBinario dado)
 			throws FalhaAcessoAosDadosException {

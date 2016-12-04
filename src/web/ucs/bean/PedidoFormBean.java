@@ -95,22 +95,9 @@ public class PedidoFormBean extends AbstractBean implements Serializable {
 
 	public void buscaPedido() {
 		System.out.println("--> buscaPedido(...)");
-		try {
-			FacesContext fc = FacesContext.getCurrentInstance();
-			String sRow = (String) fc.getExternalContext()
-					.getRequestParameterMap().get("row");
-			if (sRow != null) {
-				int index = -1;
-				try {
-					index = Integer.parseInt(sRow);
-				} catch (NumberFormatException nfe) {
-					nfe.printStackTrace();
-				}
-				this.pedido = PedidosService.getInstance().getPedido(index);
-				this.edicaoPedido = true;
-			} else {
+		try {			
 				this.pedido = new Pedido();
-			}
+			
 		} catch (Exception e) {
 			this.pedido = new Pedido();
 		}

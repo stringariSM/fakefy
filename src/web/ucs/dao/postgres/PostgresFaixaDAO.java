@@ -19,6 +19,7 @@ import web.ucs.dao.intf.FaixaDAO;
 import web.ucs.model.Album;
 import web.ucs.model.Artista;
 import web.ucs.model.Faixa;
+import web.ucs.model.Pedido;
 
 
 public class PostgresFaixaDAO extends AbstractDAO implements FaixaDAO {
@@ -121,7 +122,55 @@ public class PostgresFaixaDAO extends AbstractDAO implements FaixaDAO {
 		return faixas;
 	}
 	
-	
+	@Override
+	public Integer insere(Faixa faixa) throws FalhaAcessoAosDadosException {
+
+		Integer idInserido = null;
+
+		if (faixa != null) {
+
+			PreparedStatement pstmt = null;
+			Statement stmt = null;
+			ResultSet rs = null;
+			
+			try {
+				
+				conn.setAutoCommit(false);
+
+				pstmt = conn
+						.prepareStatement("insert into faixa(id_faixa, nome_faixa, caminho,id_faixa_album,ordem) values (0, ?, ?,?,?)");    
+
+				pstmt.setString(1, faixa.getNomeFaixa());
+				pstmt.setString(2, faixa.getCaminho());
+				pstmt.setInt(3, faixa.getIdFaixaAlbum());
+				pstmt.setInt(4, faixa.getOrdem());				
+
+				pstmt.executeUpdate();
+				
+				stmt = conn.createStatement();
+				rs = stmt.executeQuery("select FAIXA_SEQ.currval from dual");
+				if(rs.next()) {
+					idInserido = rs.getInt(1);
+				}
+				
+				conn.commit();
+								
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+				throw new FalhaAcessoAosDadosException(
+						"Falha ao inserir registro", e);
+			} finally {
+				this.fechaPreparedStatement(pstmt);
+				this.fechaStatement(stmt);
+				this.fechaResultSet(rs);
+				closeConnection();
+			}
+		} else {
+			throw new FalhaAcessoAosDadosException("Registro nulo");
+		}
+		return idInserido;
+	}
  
 	public void closeConnection() {
 		closeConnection(conn);

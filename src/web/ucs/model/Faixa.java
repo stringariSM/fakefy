@@ -3,9 +3,9 @@ package web.ucs.model;
 public class Faixa {
 	
 	private Integer id_faixa;
-	private String  nome_faixa;
+	private String  nomeFaixa;
 	private String  caminho;
-	private Integer id_faixa_album;
+	private Integer idFaixaAlbum;
 	private Integer ordem;
 	private String  artista;
 	private String  album;
@@ -15,9 +15,9 @@ public class Faixa {
 	public Faixa(Integer id_faixa, String nome_faixa, String caminho, Integer id_faixa_album, Integer ordem) {
 		super();
 		this.id_faixa = id_faixa;
-		this.nome_faixa = nome_faixa;
+		this.nomeFaixa = nome_faixa;
 		this.caminho = caminho;
-		this.id_faixa_album = id_faixa_album;
+		this.idFaixaAlbum = id_faixa_album;
 		this.ordem = ordem;
 	}
 
@@ -30,11 +30,11 @@ public class Faixa {
 	}
 
 	public String getNomeFaixa() {
-		return nome_faixa;
+		return nomeFaixa;
 	}
 
 	public void setNomeFaixa(String nome_faixa) {
-		this.nome_faixa = nome_faixa;
+		this.nomeFaixa = nome_faixa;
 	}
 	
 	public String getCaminho() {
@@ -46,11 +46,11 @@ public class Faixa {
 	}
 	
 	public Integer getIdFaixaAlbum() {
-		return id_faixa_album;
+		return idFaixaAlbum;
 	}
 
 	public void setIdFaixaAlbum(Integer id_faixa_album) {
-		this.id_faixa_album = id_faixa_album;
+		this.idFaixaAlbum = id_faixa_album;
 	}
 	
 	public Integer getOrdem() {

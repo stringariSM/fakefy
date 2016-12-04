@@ -1,42 +1,71 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	template="/templates/templateFake.xhtml">
-	
+		
 	<ui:define name="body">
 		<header>
 			<h3>Adicionar Músicas</h3>
 		</header>
+	
+	  <h:form id="faixaForm" prependId="false">
+    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
+                
+        
+        <p:outputLabel value="Nome da Música:"/>        
+		<p:inputText id="faixa_NomeMusica" value="#{faixaFormBean.faixa.nomeFaixa}" />
 		
-		<section class="listagem" id="musicas">
-			<h:form id="listaArtistasForm" prependId="false" style='width:100%;'>
-		    	<div class="row">
-		    		<div class="col-md-12">
-		    			<h:outputLabel value="Nome da Música "/>
-		    			<p:inputText id="NomeMúsica" required="true" label="NomeMúsica"/>
-		    			<p:watermark for="NomeMúsica" value="Nome da Música" id="NomeMúsica_placeholder" />
-		    		</div>
-		    	</div>
-		    	
-		    	<div class="row">
-		    		<div class="col-md-6 col-sm-12">
-				        <h:outputLabel for="menu" value="Álbuns" />
-				        <p:selectCheckboxMenu id="menu" value="${artistaBean.todosArtistas}" label="Álbuns"
-				                              filter="true" filterMatchMode="startsWith" panelStyle="width:100%">
-				            <f:selectItems value="eee" />
-				        </p:selectCheckboxMenu>
-		    		</div>
-		    	</div>
-		    	
-		    	<div class="row">
-		    		<div class="col-md-12">
-		    			<p:growl id="messages" showDetail="true" />
-					    <p:fileUpload value="#{fileUploadView.file}" mode="simple" skinSimple="true"/>
-		    		</div>
-		    	</div>
-			</h:form>
-		</section>
+		<p:outputLabel value="Id Album:"/>
+		<p:inputText id="faixa_IdAlbumFaixa" value="#{faixaFormBean.faixa.idFaixaAlbum}" />
+		
+		<p:outputLabel value="Caminho:"/>
+		<p:inputText id="faixa_Caminho" value="#{faixaFormBean.faixa.caminho}" />
+		
+		<p:outputLabel value="Ordem:"/>
+		<p:inputText id="faixa_Ordem" value="#{faixaFormBean.faixa.ordem}" />
+		
+		<p:commandButton value="Salvar" action="#{faixaFormBean.salvar}"
+					ajax="false" />
+		<br />
+        
+        <p:outputLabel for="advanced" value="Advanced:" />
+        <p:selectManyMenu id="advanced" value="#{selectManyView.selectedThemes}" converter="themeConverter"
+                          var="t" filter="true" filterMatchMode="contains" showCheckbox="true">
+            <f:selectItems value="#{selectManyView.themes}" var="theme" itemLabel="#{theme.getNomeArtista()}" itemValue="#{theme}" />
+             
+            <p:column>
+                <h:outputText styleClass="ui-theme ui-theme-bootstrap" />
+            </p:column>
+            
+            <p:column>
+                <h:outputText value="#{t.getNomeArtista()}" />
+            </p:column>
+        </p:selectManyMenu>
+        
+        <p:separator />
+ 
+    <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-check" />
+ 
+    <p:dialog header="Selected Values" modal="true" showEffect="fade" widgetVar="dlg" resizable="false">
+        <p:panelGrid columns="2" id="display" columnClasses="label,output">
+            <h:outputText value="Basic:" />
+            <p:dataList value="#{selectManyView.selectedOptions}" var="option">
+                <h:outputText value="#{option}" />
+            </p:dataList>
+ 
+            <h:outputText value="Advanced:" />
+            <p:dataList value="#{selectManyView.selectedThemes}" var="t">
+                <h:outputText value="#{t}" />
+                
+            </p:dataList>
+        </p:panelGrid>
+    </p:dialog>
+        				
+       </h:panelGrid>
+</h:form>			
+				
 	</ui:define>
 </ui:composition>

@@ -17,10 +17,7 @@
         
         <p:outputLabel value="Nome da Música:"/>        
 		<p:inputText id="faixa_NomeMusica" value="#{faixaFormBean.faixa.nomeFaixa}" />
-		
-		<p:outputLabel value="Id Album:"/>
-		<p:inputText id="faixa_IdAlbumFaixa" value="#{faixaFormBean.faixa.idFaixaAlbum}" />
-		
+					
 		<p:outputLabel value="Caminho:"/>
 		<p:inputText id="faixa_Caminho" value="#{faixaFormBean.faixa.caminho}" />
 		
@@ -30,39 +27,25 @@
 		<p:commandButton value="Salvar" action="#{faixaFormBean.salvar}"
 					ajax="false" />
 		<br />
+                
         
         <p:outputLabel for="advanced" value="Advanced:" />
-        <p:selectManyMenu id="advanced" value="#{selectManyView.selectedThemes}" converter="themeConverter"
+        <p:selectManyMenu id="advanced" value="#{albumManyView.selectedThemes}" converter="albumConverter"
                           var="t" filter="true" filterMatchMode="contains" showCheckbox="true">
-            <f:selectItems value="#{selectManyView.themes}" var="theme" itemLabel="#{theme.getNomeArtista()}" itemValue="#{theme}" />
+            <f:selectItems value="#{albumManyView.themes}" var="theme" itemLabel="#{theme.getNomeAlbum()}" itemValue="#{theme}" />
              
             <p:column>
                 <h:outputText styleClass="ui-theme ui-theme-bootstrap" />
-            </p:column>
-            
+            </p:column>            
             <p:column>
-                <h:outputText value="#{t.getNomeArtista()}" />
-            </p:column>
+                <h:outputText value="#{t.getNomeAlbum()}" />                   
+            </p:column> 
+                                                                      
         </p:selectManyMenu>
-        
+                               
         <p:separator />
  
-    <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-check" />
- 
-    <p:dialog header="Selected Values" modal="true" showEffect="fade" widgetVar="dlg" resizable="false">
-        <p:panelGrid columns="2" id="display" columnClasses="label,output">
-            <h:outputText value="Basic:" />
-            <p:dataList value="#{selectManyView.selectedOptions}" var="option">
-                <h:outputText value="#{option}" />
-            </p:dataList>
- 
-            <h:outputText value="Advanced:" />
-            <p:dataList value="#{selectManyView.selectedThemes}" var="t">
-                <h:outputText value="#{t}" />
-                
-            </p:dataList>
-        </p:panelGrid>
-    </p:dialog>
+   
         				
        </h:panelGrid>
 </h:form>			

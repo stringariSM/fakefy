@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/templateFake.xhtml">
+		
+	<ui:define name="body">
+		<header>
+			<h3>Adicionar Artista</h3>
+		</header>
+	
+	  <h:form id="faixaForm" prependId="false" class="panelGrid">
+	  
+    	<h:panelGrid columns="1" cellpadding="5" columnClasses="label, value">
+	        <p:outputLabel value="Nome do Artista:"/>        
+			<p:inputText id="nome_artista" value="#{faixaFormBean.faixa.nomeFaixa}" />
+			
+			<p:outputLabel value="Ano formação:"/>        
+			<p:inputText id="ano_artista" value="#{faixaFormBean.faixa.nomeFaixa}" />
+			
+			<h:form>
+			    <p:fileUpload fileUploadListener="#{artistaFormBean.handleFileUpload}" mode="advanced"
+			                  update="messages" auto="true" sizeLimit="1000000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+			 
+			    <p:growl id="messages" showDetail="true" />
+			</h:form>
+	       
+	        <p:separator />
+		    <p:commandButton value="Salvar" actionListener="#{artistaBean.salvar}"
+						ajax="false" class="botaopadrao"/>
+			<br />			
+       </h:panelGrid>
+	</h:form>
+		
+	</ui:define>
+</ui:composition>

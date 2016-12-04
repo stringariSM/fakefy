@@ -13,7 +13,9 @@
 				<a href="adicionaMusica.xhtml" id="btnAdicionarMusica" title="Adicionar música" class="btn-red">Adicionar Música</a>
 			</div>
 		</header>
-		
+		<div class="btnReproduzirTodos">
+			Reproduzir Todos
+		</div>
 		<section class="listagem" id="albuns">
 			<h:form id="listaArtistaForm" prependId="false" style='width:100%;'>
 		    	<p:dataTable id="tableMusicas" value="${faixaListaBean.faixas}" var="faixa"  class="sptFlex listaMusicas">
@@ -29,11 +31,9 @@
 				  		<h:outputText value="#{faixa.getAlbum()}"/>
 					</p:column>	
 					
-					<p:column headerText="">
-						<div class="alignCenter btnReproduzir">
-					  		<p:link value="Reproduzir">
-					  			<f:param name="lnkReproduzir" value="xx"/>
-					  		</p:link>
+					<p:column headerText="" align="center">
+						<div class="alignCenter btnReproduzir" data-value="#{faixa.getCaminho()}">
+					  		Reproduzir
 				  		</div>
 					</p:column>			
 				</p:dataTable>

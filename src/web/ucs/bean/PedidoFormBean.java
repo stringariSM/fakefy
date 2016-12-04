@@ -20,7 +20,7 @@ public class PedidoFormBean extends AbstractBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Pedido pedido;
-	private List<Produto> produtos;
+	private List<Produto> produtos; 
 	private ItemPedido item;
 	private boolean edicaoItem = false;
 	private boolean edicaoPedido = false;

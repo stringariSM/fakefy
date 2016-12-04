@@ -31,14 +31,18 @@
 	        	Adicionar Artista
         	</a>
         	
-	        <p:selectManyMenu id="advanced" value="#{selectManyView.selectedThemes}" converter="themeConverter"
-	                          var="t" filter="true" filterMatchMode="contains" showCheckbox="true">
-	            <f:selectItems value="#{selectManyView.themes}" var="theme" itemLabel="#{theme.getNomeArtista()}" itemValue="#{theme}" />
-	                         
-	            <p:column>
-	                <h:outputText value="#{t.getNomeArtista()}" />
-	            </p:column>
-	        </p:selectManyMenu>
+	        <p:selectManyMenu id="advanced" value="#{albumManyView.selectedThemes}" converter="albumConverter"
+                          var="t" filter="true" filterMatchMode="contains" showCheckbox="true">
+            <f:selectItems value="#{albumManyView.themes}" var="theme" itemLabel="#{theme.getNomeAlbum()}" itemValue="#{theme}" />
+             
+            <p:column>
+                <h:outputText styleClass="ui-theme ui-theme-bootstrap" />
+            </p:column>            
+            <p:column>
+                <h:outputText value="#{t.getNomeAlbum()}" />                   
+            </p:column> 
+                                                                      
+        </p:selectManyMenu>
 	        
 	        <p:separator />
 	 

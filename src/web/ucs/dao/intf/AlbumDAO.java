@@ -10,6 +10,8 @@ public interface AlbumDAO {
 
 	List<Album> buscaAlbumPorId(Integer id) throws FalhaAcessoAosDadosException;
 	
+	List<Album> buscaTodos() throws FalhaAcessoAosDadosException;
+	
 	void closeConnection();
 	
 	void setFactory(DAOFactory factory);

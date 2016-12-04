@@ -66,6 +66,43 @@ public class PostgresAlbumDAO extends AbstractDAO implements AlbumDAO {
 		return albuns;
 	}
 	
+	public List<Album> buscaTodos()
+			throws FalhaAcessoAosDadosException {
+
+		
+
+		List<Album> albuns = new ArrayList<Album>();
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			pstmt = conn
+					.prepareStatement("select ID_ALBUM,NOME_ALBUM,ANO,ID_ARTISTA_ALBUM,ID_ALBUM_FOTO from ALBUM");
+			
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				Album album = new Album();
+				album.setId(rs.getInt("ID_ALBUM"));
+				album.setNomeAlbum(rs.getString("NOME_ALBUM"));
+				 			
+				albuns.add(album);
+			}
+
+		} catch (SQLException e) {
+			throw new FalhaAcessoAosDadosException(
+					"Falha buscando todos os registros", e);
+		} finally {
+			this.fechaResultSet(rs);
+			this.fechaStatement(pstmt);
+			closeConnection();
+		}
+
+		return albuns;
+	}
+	
  
 	public void closeConnection() {
 		closeConnection(conn);

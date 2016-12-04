@@ -26,7 +26,7 @@ public class FaixaFormBean extends AbstractBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Pedido pedido;
 	private Faixa faixa;	
-	private List<Artista> artistas;
+	private List<Album> albuns;
 	private ItemPedido item;
 	private boolean edicaoItem = false;
 	private boolean edicaoPedido = false;
@@ -39,18 +39,34 @@ public class FaixaFormBean extends AbstractBean implements Serializable {
 	}
 	
 	public void setFaixa(Faixa faixa) {
+		
+		System.out.println("Chamou set faixa()");
+		
 		this.faixa = faixa;
 		
 	}
 	
-	public void setSelectedArtista(List<Artista> artista) {
-		this.artistas = artista;
+	
+	public List<Album> getSelectedAlbum() {
+				
+		System.out.println("Chamou artistaaaaaaaaab()");
 		
-		System.out.println("Chamou artistaaaaaaaaa()" + artista.get(0).getNomeArtista());
+		return albuns;
+		
+	}
+	
+	public void setSelectedAlbum(List<Album> albuns) {
+		System.out.println("Chamou artistaaaaaaaaahaha()");
+		this.albuns = albuns;
+		
+		faixa.setIdFaixaAlbum(albuns.get(0).getId());
 		
 	}
 		
 	public Faixa getFaixa() {
+		
+		System.out.println("Chamou set faixa()");
+		
 		return faixa;
 	}
 
@@ -58,6 +74,9 @@ public class FaixaFormBean extends AbstractBean implements Serializable {
 	// Métodos chamados na página
 	
 	public String salvar() {
+		
+		System.out.println("Chamou salvar faixa()");
+		
 		FaixaService.getInstance().salvaFaixa(faixa);
 		return "listaFaixas";
 	}
